@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     private float speed;
     private Rigidbody2D _rigidbody;
     private int piercesRemaining = 0;
-    // private [Type not yet implemented] sender;
+    public Gun sender;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,13 @@ public class Bullet : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-    void shoot(float degree) {
+    public void Shoot(float degree, Vector2 origin) {
+        // Activate bullet
+        gameObject.SetActive(true);
+
+        // Set position
+        _rigidbody.position = origin;
+
         // Set velocity vector
         Vector2 direction = new Vector2(Mathf.Cos(Mathf.Deg2Rad*degree), Mathf.Sin(Mathf.Deg2Rad*degree));
         _rigidbody.velocity = speed * direction;
@@ -30,16 +36,21 @@ public class Bullet : MonoBehaviour
     void returnToOrigin() {
         // Sends the bullet back to whence it came
 
-        // Destroy the bullet game object
-        Destroy(gameObject);
+        // Disable the bullet game object
+        gameObject.SetActive(false);
+        
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
         // Check if other object is an entity
-        // If it is, damage it and decrement the number of pierces
-        // Note: Checking if we've already hit this enemy will not be necessary if the enemy has a damage cooldown.
-        //       OR, we can have a list of enemies (or uuid's) that we've already hit
-        // We also need to check if this bullet has pierced enough enemies, and send it back to its origin
+        // If it is, decrement the number of pierces
+        if (collision.gameObject.GetComponent<GenericEntity>()) {
+            // Decrement the number of pierces remaining.  Return to sender if applicable
+            piercesRemaining--;
+            if (piercesRemaining <= 0) {
+                returnToOrigin();
+            }
+        }
     }
 
     // Update is called once per frame

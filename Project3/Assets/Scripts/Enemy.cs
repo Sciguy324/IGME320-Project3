@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : GenericEntity
 {
+    public int attackDamage;
+
     // Start is called before the first frame update
     void Start()
     {
