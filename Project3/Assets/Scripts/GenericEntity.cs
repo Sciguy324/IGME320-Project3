@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class GenericEntity : MonoBehaviour
 {
-    private int health; // The amount of health that the entity has, is a number instead of like the player who has hearts
-    private float speed; // How fast the entity moves
+    public float speed = 1.0f; // How fast the entity moves
+    public int health = 1; // The amount of health that the entity has, is a number instead of like the player who has hearts
     protected Vector3 position; // Position of the entity
     protected Vector3 direction; // The direction the entity is facing
     protected Vector3 velocity; // The velocity of the entity
@@ -51,8 +51,7 @@ public class GenericEntity : MonoBehaviour
         get { return position; }
         set { position = value; }
     }
-    public float speed = 1.0f;
-    public int health = 1;
+
     public Gun gun;
     public Rigidbody2D _rigidBody;
 
