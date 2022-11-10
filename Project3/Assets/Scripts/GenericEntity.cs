@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericEntity : MonoBehaviour
+public abstract class GenericEntity : MonoBehaviour
 {
     public float speed = 1.0f; // How fast the entity moves
     public int health = 1; // The amount of health that the entity has, is a number instead of like the player who has hearts
@@ -271,7 +271,7 @@ public class GenericEntity : MonoBehaviour
     {
         return Flee(targetEntity.Position);
     }
-    //public abstract void CalculateSteeringForces();
+
     virtual public void OnCollisionEnter2D(Collision2D collision) {
         // Check if collided thing is a bullet
         if (collision.gameObject.GetComponent<Bullet>()) {
@@ -299,4 +299,7 @@ public class GenericEntity : MonoBehaviour
         // Shoot the gun, using the current direction/position of this entity
         gun.Shoot(_rigidBody.rotation, _rigidBody.position);
     }
+
+    public abstract void CalculateSteeringForces();
+
 }

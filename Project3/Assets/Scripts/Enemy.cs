@@ -6,6 +6,8 @@ public class Enemy : GenericEntity
 {
     public int attackDamage;
 
+    public Player player;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,8 +20,19 @@ public class Enemy : GenericEntity
         
     }
 
-    private void Seek()
+    public override void CalculateSteeringForces()
     {
+        Vector3 ultimateForce = Vector3.zero;
 
+        ultimateForce += Seek(player);
+
+        ultimateForce += Seperate(manager.enemies);
+
+        ultimateForce += StayInBounds();
+
+        ultimateForce = Vector3.ClampMagnitude(ultimateForce, maxForce);
+
+        ApplyForce(ultimateForce);
     }
+
 }
