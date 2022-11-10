@@ -64,13 +64,13 @@ public class GenericEntity : MonoBehaviour
         minZ = (arena.transform.position.z - (arena.transform.localScale.z / 2)) * 10;
         maxZ = (arena.transform.position.z + (arena.transform.localScale.z / 2)) * 10;
         radius = mesh.bounds.extents.x;
-        randomAngle = Random.Range(0, 360);
+        //randomAngle = Random.Range(0, 360);
     }
 
     // Update is called once per frame
     void Update()
     {
-        CalculateSteeringForces();
+        //CalculateSteeringForces();
 
         // This is needed for all entities
 
@@ -126,20 +126,20 @@ public class GenericEntity : MonoBehaviour
 
     protected Vector3 StayInBounds()
     {
-        Bounds boundaries = manager.WorldBounds;
-        Vector3 futurePos = GetFuturePosition(1);
-        Vector3 posToFlee = boundaries.ClosestPoint(position);
-        float distBetween = Vector3.Distance(position, posToFlee);
-        distBetween = Mathf.Max(distBetween, 0.001f);
+        //arena.GetComponent<SpriteRenderer>()
+        Vector3 futurePos = new Vector3(1.0f, 1.0f, 1.0f); //GetFuturePosition(1);
+        //Vector3 posToFlee = boundaries.ClosestPoint(position);
+        //float distBetween = Vector3.Distance(position, posToFlee);
+        //distBetween = Mathf.Max(distBetween, 0.001f);
         if (position.x > maxX || position.x < minX ||
             position.z > maxZ || position.z < minZ)
         {
-            return Seek(posToFlee) * 2000;
+            //return Seek(posToFlee) * 2000;
         }
         else if (futurePos.x >= maxX || futurePos.x <= minX ||
             futurePos.z >= maxZ || futurePos.z <= minZ)
         {
-            return Flee(posToFlee) * (1 / distBetween);
+            //return Flee(posToFlee) * (1 / distBetween);
         }
 
 
@@ -180,5 +180,92 @@ public class GenericEntity : MonoBehaviour
 
         return seperationForce;
     }
-    public abstract void CalculateSteeringForces();
+
+    protected float GetSquaredDistanceBetween(GenericEntity entity)
+    {
+        // Entity1 center, x coord
+        float entity1CenterX = gameObject.GetComponent<BoxCollider>().bounds.center.x;
+        // Vehicle center, y coord
+        float entity1CenterY = gameObject.GetComponent<BoxCollider>().bounds.center.y;
+        // Entity center, x coord
+        float entity2CenterX = entity.GetComponent<BoxCollider>().bounds.center.x;
+        // Entity center, y coord
+        float entity2CenterY = entity.GetComponent<BoxCollider>().bounds.center.y;
+
+        // Distance between vehicle and entity's center squared
+        float distanceSquared = Mathf.Pow((entity1CenterX - entity2CenterX), 2) + Mathf.Pow((entity1CenterY - entity2CenterY), 2);
+
+        // Distance between vehicle and entity
+        return distanceSquared;
+    }
+
+    /// <summary>
+    /// Calculates a force that will turn the vehicle object towards a specific target position
+    /// </summary>
+    /// <param name="targetPosition">Position of the target that is being seeked</param>
+    /// <returns>A force that will turn the vehicle object towards a specific target</returns>
+    public Vector3 Seek(Vector3 targetPosition)
+    {
+        // calculating our desired velocity
+        // a vector towards our targetPosition
+        Vector3 desiredVelocity = targetPosition - position;
+
+        // Scale desired velocity to equal our max speed
+        desiredVelocity = desiredVelocity.normalized * maxSpeed;
+
+        // Calculate the seek steering force
+        Vector3 seekingForce = desiredVelocity - velocity;
+
+        //direction = seekingForce.normalized;
+
+        return seekingForce;
+    }
+
+    /// <summary>
+    /// Calculates a force that will turn the entity object towards a specific target GameObject
+    /// </summary>
+    /// <param name="targetObject">Object to be targeted</param>
+    /// <returns>A force that will turn the entity object towards a specific target GameObject</returns>
+    public Vector3 Seek(GameObject targetObject)
+    {
+        return Seek(targetObject.transform.position);
+    }
+
+    /// <summary>
+    /// Calculates a force that will turn the entity object towards a specific target GenericEntity object
+    /// </summary>
+    /// <param name="targetVehicle">Vehicle to be targeted</param>
+    /// <returns>A force that will turn the entity object towards a specific target GenericEntity object</returns>
+    public Vector3 Seek(GenericEntity targetEntity)
+    {
+        return Seek(targetEntity.position);
+    }
+
+    public Vector3 Flee(Vector3 targetPosition)
+    {
+        // calculating our desired velocity
+        // a vector away from our targetPosition
+        Vector3 desiredVelocity = position - targetPosition;
+
+        // Scale desired velocity to equal our max speed
+        desiredVelocity = desiredVelocity.normalized * maxSpeed;
+
+        // Calculate the flee steering force
+        Vector3 fleeingForce = desiredVelocity - velocity;
+
+        return fleeingForce;
+
+
+    }
+
+    public Vector3 Flee(GameObject fleeObject)
+    {
+        return Flee(fleeObject.transform.position);
+    }
+
+    public Vector3 Flee(GenericEntity targetEntity)
+    {
+        return Flee(targetEntity.Position);
+    }
+    //public abstract void CalculateSteeringForces();
 }
