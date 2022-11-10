@@ -6,6 +6,8 @@ public class Player : GenericEntity
 {
     public int xp;
     public float reloadSpeed;
+    private float invincibilityTime = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {

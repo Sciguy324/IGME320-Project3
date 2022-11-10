@@ -94,6 +94,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac8ce93880d03fd4d9a95f7341c68aa3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 1
+  health: 1
+  mesh: {fileID: 0}
+  mass: 1
+  personalSpace: 1
+  maxSpeed: 2
+  maxForce: 2
+  gun: {fileID: 0}
+  _rigidBody: {fileID: -6713376892415264759}
 --- !u!212 &-4992438989061296743
 SpriteRenderer:
   m_ObjectHideFlags: 0
