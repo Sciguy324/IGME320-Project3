@@ -43,4 +43,9 @@ public class Player : GenericEntity
             Damage(collision.gameObject.GetComponent<Enemy>().attackDamage);
         }
     }
+
+    public override void CalculateSteeringForces()
+    {
+
+    }
 }
