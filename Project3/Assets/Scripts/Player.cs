@@ -6,17 +6,30 @@ public class Player : GenericEntity
 {
     public int xp;
     public float reloadSpeed;
-
     // Start is called before the first frame update
     void Start()
     {
-        
+        speed = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        //Look at mouse
+        LookAtMouse();
+        Move();
+    }
+
+    private void LookAtMouse()
+    {
+        Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
+    }
+    private void Move()
+    {
+        var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        _rigidBody.velocity = input.normalized * speed;
+
     }
 
     override public void OnCollisionEnter2D(Collision2D collision) {
