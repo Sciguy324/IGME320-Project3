@@ -5,6 +5,8 @@ using UnityEngine;
 public class Enemy : GenericEntity
 {
     public int attackDamage;
+    public GenericEntity targetEntity;
+    public SpawnManager spawnManager;
 
     public Player player;
 

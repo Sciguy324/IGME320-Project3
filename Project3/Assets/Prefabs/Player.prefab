@@ -7,6 +7,50 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4992438989061296743, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_Size.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: -4992438989061296743, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_Size.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: -4992438989061296743, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c03876332ca5f47c9aeeadb7700c99fa, type: 3}
+    - target: {fileID: -4992438989061296743, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_SpriteTilingProperty.newSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 0.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 4769698386334110249, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -62,6 +106,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 5095994122762799971, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+--- !u!50 &1997354969597248600 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: -6713376892415264759, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+  m_PrefabInstance: {fileID: 4138047788773620817}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7640208115546962065 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6010674132499989696, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
@@ -81,3 +130,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   health: 0
+  mesh: {fileID: 0}
+  mass: 1
+  personalSpace: 1
+  maxSpeed: 2
+  maxForce: 2
+  gun: {fileID: 0}
+  _rigidBody: {fileID: 1997354969597248600}
+  xp: 0
+  reloadSpeed: 0

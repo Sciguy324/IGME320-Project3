@@ -151,7 +151,7 @@ public abstract class GenericEntity : MonoBehaviour
     }
 
     /// <summary>
-    /// Makes sure each entity is seperated, specifically the enemies
+    /// Makes sure each entity is separated, specifically the enemies
     /// </summary>
     /// <typeparam name="T">List of entities</typeparam>
     /// <param name="vehicles">Entities</param>
@@ -271,7 +271,6 @@ public abstract class GenericEntity : MonoBehaviour
     {
         return Flee(targetEntity.Position);
     }
-
     virtual public void OnCollisionEnter2D(Collision2D collision) {
         // Check if collided thing is a bullet
         if (collision.gameObject.GetComponent<Bullet>()) {
@@ -289,7 +288,7 @@ public abstract class GenericEntity : MonoBehaviour
         return true;
     }
 
-    public void SetGet(Gun newGun) {
+    public void SetGun(Gun newGun) {
         // Sets the entity's currently held gun
         gun = newGun;
         // FIXME: Where does the old gun go?
