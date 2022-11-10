@@ -128,6 +128,40 @@ public class GenericEntity : MonoBehaviour
         transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
+    // Determines the closest replica target position of the provided target position
+    Vector3 trueNearestPosition(Vector3 targetPosition)
+    {
+        float targetX = targetPosition.x;
+        float targetZ = targetPosition.z;
+
+        float width = maxX-minX;
+        float height = maxZ-minZ;
+
+        // Find closest x-position
+        if (Mathf.Abs(targetPosition.x - position.x) > width/2)
+        {
+            if (targetPosition.x > position.x)
+            {
+                targetX -= width;
+            } else {
+                targetX += width;
+            }
+        }
+
+        // Find closest z-position
+        if (Mathf.Abs(targetPosition.z - position.z) > height/2)
+        {
+            if (targetPosition.z > position.z)
+            {
+                targetZ -= height;
+            } else {
+                targetZ += height;
+            }
+        }
+
+        return new Vector2(targetX, targetZ);
+    }
+
     protected Vector3 StayInBounds()
     {
         //arena.GetComponent<SpriteRenderer>()
