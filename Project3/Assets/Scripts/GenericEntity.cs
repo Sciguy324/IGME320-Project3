@@ -51,6 +51,10 @@ public class GenericEntity : MonoBehaviour
         get { return position; }
         set { position = value; }
     }
+    public float speed = 1.0f;
+    public int health = 1;
+    public Gun gun;
+    public Rigidbody2D _rigidBody;
 
     // Start is called before the first frame update
     void Start()
@@ -65,6 +69,7 @@ public class GenericEntity : MonoBehaviour
         maxZ = (arena.transform.position.z + (arena.transform.localScale.z / 2)) * 10;
         radius = mesh.bounds.extents.x;
         //randomAngle = Random.Range(0, 360);
+        _rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -268,4 +273,31 @@ public class GenericEntity : MonoBehaviour
         return Flee(targetEntity.Position);
     }
     //public abstract void CalculateSteeringForces();
+    virtual public void OnCollisionEnter2D(Collision2D collision) {
+        // Check if collided thing is a bullet
+        if (collision.gameObject.GetComponent<Bullet>()) {
+            Bullet bullet = collision.gameObject.GetComponent<Bullet>();
+            // Apply damage
+            Damage(bullet.damage);
+        }
+    }
+
+    public bool Damage(int amount) {
+        // Applies damage to the entity
+        health -= amount;
+
+        // Damage occurred
+        return true;
+    }
+
+    public void SetGet(Gun newGun) {
+        // Sets the entity's currently held gun
+        gun = newGun;
+        // FIXME: Where does the old gun go?
+    }
+
+    public void FireGun() {
+        // Shoot the gun, using the current direction/position of this entity
+        gun.Shoot(_rigidBody.rotation, _rigidBody.position);
+    }
 }

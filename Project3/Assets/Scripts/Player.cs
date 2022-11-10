@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Player : GenericEntity
 {
+    public int xp;
+    public float reloadSpeed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,15 @@ public class Player : GenericEntity
     void Update()
     {
         
+    }
+
+    override public void OnCollisionEnter2D(Collision2D collision) {
+        // Run parent-class handling
+        base.OnCollisionEnter2D(collision);
+
+        // Additional handling: enemy collision
+        if (collision.gameObject.GetComponent<Enemy>()) {
+            Damage(collision.gameObject.GetComponent<Enemy>().attackDamage);
+        }
     }
 }
