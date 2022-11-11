@@ -11,19 +11,19 @@ public abstract class GenericEntity : MonoBehaviour
     protected Vector3 velocity; // The velocity of the entity
     protected Vector3 acceleration; // The acceleration of the entity
     protected GameManager manager; // The manager for the entire game, a reference to it
-    protected GameObject arena;
+    public GameObject arena;
 
     private float radius; // Radius of entity
 
-    public MeshRenderer mesh;
+    public SpriteRenderer sprite;
 
     public float Radius => radius; // Accessor for the radius variable
 
     // The bounds of the level/screen
     protected float minX;
     protected float maxX;
-    protected float minZ;
-    protected float maxZ;
+    protected float minY;
+    protected float maxY;
 
     private Vector3 forward = Vector3.forward; // Vector3 that represents forward direction
     private Vector3 right = Vector3.right; // Vector3 that represents right direction
@@ -59,14 +59,15 @@ public abstract class GenericEntity : MonoBehaviour
     void Start()
     {
         position = transform.position;
+        sprite = gameObject.GetComponent<SpriteRenderer>();
         // TODO: UPDATE IN TERMS OF THE ACTUAL ARENA OBJECT IN THE UNITY SCENE
         // arena = GameObject.Find("Plane");
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         minX = (arena.transform.position.x - (arena.transform.localScale.x / 2)) * 10;
         maxX = (arena.transform.position.x + (arena.transform.localScale.x / 2)) * 10;
-        minZ = (arena.transform.position.z - (arena.transform.localScale.z / 2)) * 10;
-        maxZ = (arena.transform.position.z + (arena.transform.localScale.z / 2)) * 10;
-        radius = mesh.bounds.extents.x;
+        minY = (arena.transform.position.y - (arena.transform.localScale.y / 2)) * 10;
+        maxY = (arena.transform.position.y + (arena.transform.localScale.y / 2)) * 10;
+        radius = sprite.bounds.extents.x;
         //randomAngle = Random.Range(0, 360);
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
@@ -74,7 +75,7 @@ public abstract class GenericEntity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //CalculateSteeringForces();
+        CalculateSteeringForces();
 
         // This is needed for all entities
 
@@ -99,14 +100,14 @@ public abstract class GenericEntity : MonoBehaviour
         // Step 1: add acceleration to velocity * time
         velocity += acceleration * Time.deltaTime;
 
-        // Don't worry about the y axis, we're just on a plane on the ground
-        velocity.y = 0;
+        // Don't worry about the z axis, it is 2d
+        velocity.z = 0;
 
         // Step 2: add our velocity to our position
         position += velocity * Time.deltaTime;
 
-        // Don't worry about the y axis, we're just on a plane on the ground
-        position.y = 0;
+        // Don't worry about the z axis, it is 2d
+        position.z = 0;
 
         // Step 3: reset our acceleration and set our direction vector
         if (velocity != Vector3.zero)
@@ -125,17 +126,16 @@ public abstract class GenericEntity : MonoBehaviour
     private void SetTransform()
     {
         transform.position = position;
-        transform.rotation = Quaternion.LookRotation(direction, Vector3.up);
     }
 
     // Determines the closest replica target position of the provided target position
     Vector3 trueNearestPosition(Vector3 targetPosition)
     {
         float targetX = targetPosition.x;
-        float targetZ = targetPosition.z;
+        float targetY = targetPosition.y;
 
         float width = maxX-minX;
-        float height = maxZ-minZ;
+        float height = maxY-minY;
 
         // Find closest x-position
         if (Mathf.Abs(targetPosition.x - position.x) > width/2)
@@ -148,18 +148,18 @@ public abstract class GenericEntity : MonoBehaviour
             }
         }
 
-        // Find closest z-position
-        if (Mathf.Abs(targetPosition.z - position.z) > height/2)
+        // Find closest y-position
+        if (Mathf.Abs(targetPosition.y - position.y) > height/2)
         {
-            if (targetPosition.z > position.z)
+            if (targetPosition.y > position.y)
             {
-                targetZ -= height;
+                targetY -= height;
             } else {
-                targetZ += height;
+                targetY += height;
             }
         }
 
-        return new Vector2(targetX, targetZ);
+        return new Vector2(targetX, targetY);
     }
 
     protected Vector3 StayInBounds()
@@ -170,12 +170,12 @@ public abstract class GenericEntity : MonoBehaviour
         //float distBetween = Vector3.Distance(position, posToFlee);
         //distBetween = Mathf.Max(distBetween, 0.001f);
         if (position.x > maxX || position.x < minX ||
-            position.z > maxZ || position.z < minZ)
+            position.y > maxY || position.y < minY)
         {
             //return Seek(posToFlee) * 2000;
         }
         else if (futurePos.x >= maxX || futurePos.x <= minX ||
-            futurePos.z >= maxZ || futurePos.z <= minZ)
+            futurePos.y >= maxY || futurePos.y <= minY)
         {
             //return Flee(posToFlee) * (1 / distBetween);
         }
@@ -188,7 +188,7 @@ public abstract class GenericEntity : MonoBehaviour
     /// Makes sure each entity is separated, specifically the enemies
     /// </summary>
     /// <typeparam name="T">List of entities</typeparam>
-    /// <param name="vehicles">Entities</param>
+    /// <param name="entities">Entities</param>
     /// <returns>Seperation force</returns>
     protected Vector3 Seperate<T>(List<T> entities) where T : GenericEntity
     {

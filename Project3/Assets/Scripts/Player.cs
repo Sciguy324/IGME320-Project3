@@ -20,6 +20,18 @@ public class Player : GenericEntity
         //Look at mouse
         LookAtMouse();
         Move();
+
+        position = transform.position;
+        sprite = gameObject.GetComponent<SpriteRenderer>();
+        // TODO: UPDATE IN TERMS OF THE ACTUAL ARENA OBJECT IN THE UNITY SCENE
+        // arena = GameObject.Find("Plane");
+        manager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        minX = (arena.transform.position.x - (arena.transform.localScale.x / 2)) * 10;
+        maxX = (arena.transform.position.x + (arena.transform.localScale.x / 2)) * 10;
+        minY = (arena.transform.position.y - (arena.transform.localScale.y / 2)) * 10;
+        maxY = (arena.transform.position.y + (arena.transform.localScale.y / 2)) * 10;
+        //randomAngle = Random.Range(0, 360);
+        _rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     private void LookAtMouse()

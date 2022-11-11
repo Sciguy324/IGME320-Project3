@@ -249,7 +249,7 @@ MonoBehaviour:
   personalSpace: 1
   maxSpeed: 2
   maxForce: 2
-  gun: {fileID: 0}
+  gun: {fileID: 7573609748952492454, guid: 38178ea33b49de241b54ef0761c87e0a, type: 3}
   _rigidBody: {fileID: 1997354969597248600}
   xp: 0
   reloadSpeed: 0

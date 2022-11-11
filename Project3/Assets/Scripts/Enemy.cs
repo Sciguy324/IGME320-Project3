@@ -10,29 +10,19 @@ public class Enemy : GenericEntity
 
     public Player player;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public override void CalculateSteeringForces()
     {
         Vector3 ultimateForce = Vector3.zero;
 
         ultimateForce += Seek(player);
 
-        ultimateForce += Seperate(manager.enemies);
+        //ultimateForce += Seperate(manager.enemies);
 
-        ultimateForce += StayInBounds();
+        //ultimateForce += StayInBounds();
 
         ultimateForce = Vector3.ClampMagnitude(ultimateForce, maxForce);
+
+        Debug.Log("Ultimate Force for Enemy:" + ultimateForce);
 
         ApplyForce(ultimateForce);
     }
