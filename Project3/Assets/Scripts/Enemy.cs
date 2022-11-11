@@ -6,15 +6,12 @@ public class Enemy : GenericEntity
 {
     public int attackDamage;
     public GenericEntity targetEntity;
-    public SpawnManager spawnManager;
-
-    public Player player;
 
     public override void CalculateSteeringForces()
     {
         Vector3 ultimateForce = Vector3.zero;
 
-        ultimateForce += Seek(player);
+        ultimateForce += Seek(targetEntity);
 
         //ultimateForce += Seperate(manager.enemies);
 
@@ -25,6 +22,11 @@ public class Enemy : GenericEntity
         Debug.Log("Ultimate Force for Enemy:" + ultimateForce);
 
         ApplyForce(ultimateForce);
+    }
+
+    public override void Die() {
+        // Deactivate this entity
+        gameObject.SetActive(false);
     }
 
 }

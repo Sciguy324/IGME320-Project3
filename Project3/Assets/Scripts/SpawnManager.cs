@@ -8,12 +8,14 @@ public class SpawnManager : MonoBehaviour
     public float minSpawnRadius;
     public float spawnSpread;
     public int enemySpawnCount;
-    private List<Enemy> SpawnedEnemies;
+    public GenericEntity SurroundEntity;
+    private List<Enemy> SpawnedEnemies = new List<Enemy>();
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        // Test spawn
+        SpawnEnemies();
     }
 
     // Update is called once per frame
@@ -25,21 +27,42 @@ public class SpawnManager : MonoBehaviour
     // Spawns more enemies
     void SpawnEnemies()
     {
-        // Spawn a single enemy
-        for (int i = 0; i < enemySpawnCount; i++)
+        int toSpawn = enemySpawnCount;
+        Vector2 spawnCenter = SurroundEntity.transform.position;
+
+        // Recycle existing gameobjects first
+        if (SpawnableEnemies.Count > 0)
         {
-            SpawnSingleEnemy();
+            foreach (Enemy entity in SpawnedEnemies)
+            {
+                if (!entity.gameObject.activeSelf) {
+                    toSpawn--;
+                    entity.Respawn(RandPos(spawnCenter));
+                }
+
+                if (toSpawn == 0) {
+                    // We've spawned enough
+                    return;
+                }
+            }
         }
-    }
-    
-    // Spawns one enemy at a time.  Used by SpawnEnemies()
-    void SpawnSingleEnemy() {
-        // Prioritize spawning an unactive enemy
-        // If no such enemy exists, instantiate a new one
+        // Instantiate new entities if we need more
+
+        // Spawn a single enemy
+        for (int i = 0; i < toSpawn; i++)
+        {
+            // Randomly pick enemy type and position
+            int randIndex = Random.Range(0, SpawnableEnemies.Count);
+            Debug.Log(SpawnableEnemies[randIndex].name);
+            Enemy newEnemy = Instantiate(SpawnableEnemies[randIndex], RandPos(spawnCenter), Quaternion.identity);
+
+            // Add to list
+            SpawnedEnemies.Add(newEnemy);
+        }
     }
 
     // Pick a random location, used for picking where to spawn enemies
-    Vector2 RandPos() {
+    Vector2 RandPos(Vector2 center) {
         // Pick random angle
         float angle = Random.Range(0.0f, 2*Mathf.PI);
 
@@ -48,6 +71,6 @@ public class SpawnManager : MonoBehaviour
         float distance = minSpawnRadius * (1 + Mathf.Exp(-Random.Range(0.0f, 5.0f)/spawnSpread));
 
         // Convert to vector
-        return new Vector2(distance*Mathf.Cos(angle), distance*Mathf.Sin(angle));
+        return center + new Vector2(distance*Mathf.Cos(angle), distance*Mathf.Sin(angle));
     }
 }

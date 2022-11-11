@@ -52,8 +52,14 @@ public class Player : GenericEntity
 
         // Additional handling: enemy collision
         if (collision.gameObject.GetComponent<Enemy>()) {
+            Debug.Log("Ouch!");
             Damage(collision.gameObject.GetComponent<Enemy>().attackDamage);
         }
+    }
+
+    public override void Die()
+    {
+        Debug.Log("Oh no, I died!");
     }
 
     public override void CalculateSteeringForces()
