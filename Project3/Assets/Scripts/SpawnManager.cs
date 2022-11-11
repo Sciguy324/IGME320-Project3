@@ -8,13 +8,15 @@ public class SpawnManager : MonoBehaviour
     public float minSpawnRadius;
     public float spawnSpread;
     public int enemySpawnCount;
-    public GenericEntity SurroundEntity;
+    public GameObject SurroundEntityPrefab;
+    private Player SurroundEntity;
     private List<Enemy> SpawnedEnemies = new List<Enemy>();
 
     // Start is called before the first frame update
     void Start()
     {
         // Test spawn
+        SpawnPlayer();
         SpawnEnemies();
     }
 
@@ -59,6 +61,12 @@ public class SpawnManager : MonoBehaviour
             // Add to list
             SpawnedEnemies.Add(newEnemy);
         }
+    }
+
+    void SpawnPlayer()
+    {
+        Player player = Instantiate(SurroundEntityPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
+        SurroundEntity = player;
     }
 
     // Pick a random location, used for picking where to spawn enemies

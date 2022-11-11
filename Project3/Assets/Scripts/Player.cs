@@ -12,14 +12,6 @@ public class Player : GenericEntity
     void Start()
     {
         speed = 10;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        //Look at mouse
-        LookAtMouse();
-        Move();
 
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
@@ -32,6 +24,15 @@ public class Player : GenericEntity
         maxY = (arena.transform.position.y + (arena.transform.localScale.y / 2)) * 10;
         //randomAngle = Random.Range(0, 360);
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //Look at mouse
+        LookAtMouse();
+        Move();
+
     }
 
     private void LookAtMouse()

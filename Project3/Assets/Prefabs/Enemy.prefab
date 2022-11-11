@@ -45,11 +45,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.y
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2712253783152734728, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_SpriteTilingProperty.adaptiveTilingThreshold
@@ -134,7 +134,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   maxHealth: 1
-  mesh: {fileID: 0}
+  arena: {fileID: 4506757067362272662, guid: e390d061273bb194083d8792bff54eec, type: 3}
+  sprite: {fileID: 0}
   mass: 1
   personalSpace: 1
   maxSpeed: 2
@@ -143,5 +144,3 @@ MonoBehaviour:
   _rigidBody: {fileID: 1997354969597248600}
   attackDamage: 0
   targetEntity: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
-  spawnManager: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
-  player: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
