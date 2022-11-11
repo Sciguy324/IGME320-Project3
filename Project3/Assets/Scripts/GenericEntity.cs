@@ -290,14 +290,7 @@ public class GenericEntity : MonoBehaviour
         return true;
     }
 
-    public void SetGun(Gun newGun) {
-        // Sets the entity's currently held gun
-        gun = newGun;
-        // FIXME: Where does the old gun go?
-    }
+ 
 
-    public void FireGun() {
-        // Shoot the gun, using the current direction/position of this entity
-        gun.Shoot(_rigidBody.rotation, _rigidBody.position);
-    }
+  
 }

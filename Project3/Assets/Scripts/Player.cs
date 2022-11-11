@@ -20,6 +20,10 @@ public class Player : GenericEntity
         //Look at mouse
         LookAtMouse();
         Move();
+        if (Input.GetMouseButtonDown(0))
+        {
+            gun.Shoot();
+        }
     }
 
     private void LookAtMouse()

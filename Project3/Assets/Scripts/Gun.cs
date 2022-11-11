@@ -4,44 +4,47 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    private List<Bullet> magazine;
+    public List<GameObject> bulletObjectMagazine;
     public int maxMagazineSize;
+    public int currentBullet;
     public float shotSpread;
-
+    public GameObject bulletPrefeb;
+    public Transform firePoint;
+    public float bulletSpeed = 20;
+    public int bulletPiercing =1;
     // Start is called before the first frame update
     void Start()
     {
-        
+        bulletObjectMagazine = new List<GameObject>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
     }
 
-    public void InsertBullet(Bullet bullet) {
-        magazine.Add(bullet);
-    }
 
-    public int BulletsRemaining() {
-        // Returns the number of bullets remaining in the magazine
-        return magazine.Count;
-    }
 
-    public void Shoot(float angleDegrees, Vector2 origin) {
-        // Shoots the gun
-
-        // Only fire if enough bullets are available
-        if (BulletsRemaining() > 0) {
-            // Add a small amount of spread to the angle
-            angleDegrees += Random.Range(-shotSpread, shotSpread);
-
-            // Fire a bullet
-            magazine[0].Shoot(angleDegrees, origin);
-
-            // Remove from magazine
-            magazine.RemoveAt(0);
+    public void Shoot() {
+        GameObject bullet;
+        //If there are no bullets waiting to be shot, make a new one
+        if (bulletObjectMagazine.Count == 0)
+        {
+            bullet = Instantiate(bulletPrefeb, firePoint.position, firePoint.rotation);
+            bullet.GetComponent<Bullet>().sender = this;
         }
+        //If there are unactive bullets ready to be shot, use them
+        else
+        { 
+            bullet = bulletObjectMagazine[0];
+            bullet.SetActive(true);
+            bulletObjectMagazine.Remove(bullet);
+        }
+        bullet = Instantiate(bulletPrefeb, firePoint.position, firePoint.rotation);
+
+        //fire the bullet by giving it velocity
+        bullet.GetComponent<Bullet>().maxPierces = bulletPiercing;
+        bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
     }
 }

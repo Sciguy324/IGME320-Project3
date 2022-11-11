@@ -16,26 +16,16 @@ public class Bullet : MonoBehaviour
     {
         // Obtain component(s) for later use
         _rigidbody = GetComponent<Rigidbody2D>();
+        maxPierces = sender.bulletPiercing;
+
     }
 
-    public void Shoot(float degree, Vector2 origin) {
-        // Activate bullet
-        gameObject.SetActive(true);
 
-        // Set position
-        _rigidbody.position = origin;
 
-        // Set velocity vector
-        Vector2 direction = new Vector2(Mathf.Cos(Mathf.Deg2Rad*degree), Mathf.Sin(Mathf.Deg2Rad*degree));
-        _rigidbody.velocity = speed * direction;
-
-        // Set the number of enemies that can be pierced
-        piercesRemaining = maxPierces;
-    }
 
     void returnToOrigin() {
         // Sends the bullet back to whence it came
-
+        sender.bulletObjectMagazine.Add(this.gameObject);
         // Disable the bullet game object
         gameObject.SetActive(false);
         
@@ -44,7 +34,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         // Check if other object is an entity
         // If it is, decrement the number of pierces
-        if (collision.gameObject.GetComponent<GenericEntity>()) {
+        if (collision.gameObject.GetComponent<GenericEntity>() ) {
             // Decrement the number of pierces remaining.  Return to sender if applicable
             piercesRemaining--;
             if (piercesRemaining <= 0) {
@@ -56,6 +46,10 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //Check if out of bounds
+        if (transform.position.x > -30 || transform.position.x < 30 || transform.position.y > -30 || transform.position.y < 30)
+        {
+            returnToOrigin();
+        }
     }
 }

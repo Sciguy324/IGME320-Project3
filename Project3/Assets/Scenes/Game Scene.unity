@@ -147,6 +147,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7718474000079205666, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: shotSpread
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718474000079205666, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: bulletSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718474000079205666, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: currentBullet
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718474000079205666, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: maxMagazineSize
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7718474000079205666, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: bulletObjectMagazine.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8889001632118075000, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: m_RootOrder
       value: 1
