@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6713376892415264759, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4992438989061296743, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_Size.x
       value: 0.64
@@ -123,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3a763c35b2bcdc4e9f16c07bf1e22f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0
-  health: 0
+  speed: 1
+  maxHealth: 1
   mesh: {fileID: 0}
   mass: 1
   personalSpace: 1

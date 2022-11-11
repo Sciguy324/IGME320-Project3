@@ -5,7 +5,8 @@ using UnityEngine;
 public abstract class GenericEntity : MonoBehaviour
 {
     public float speed = 1.0f; // How fast the entity moves
-    public int health = 1; // The amount of health that the entity has, is a number instead of like the player who has hearts
+    public int maxHealth = 1; // The default number of hearts the entity will have upon spawning
+    private int health; // The amount of health that the entity has, is a number instead of like the player who has hearts
     protected Vector3 position; // Position of the entity
     protected Vector3 direction; // The direction the entity is facing
     protected Vector3 velocity; // The velocity of the entity
@@ -58,7 +59,9 @@ public abstract class GenericEntity : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
         position = transform.position;
+        _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         // TODO: UPDATE IN TERMS OF THE ACTUAL ARENA OBJECT IN THE UNITY SCENE
         // arena = GameObject.Find("Plane");
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -68,7 +71,6 @@ public abstract class GenericEntity : MonoBehaviour
         maxZ = (arena.transform.position.z + (arena.transform.localScale.z / 2)) * 10;
         radius = mesh.bounds.extents.x;
         //randomAngle = Random.Range(0, 360);
-        _rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -318,8 +320,14 @@ public abstract class GenericEntity : MonoBehaviour
         // Applies damage to the entity
         health -= amount;
 
+        // Handle the case of zero-health
+
         // Damage occurred
         return true;
+    }
+
+    virtual public void Die() {
+        // Handle what to do upon death.  Override in subclass
     }
 
     public void SetGun(Gun newGun) {
@@ -331,6 +339,15 @@ public abstract class GenericEntity : MonoBehaviour
     public void FireGun() {
         // Shoot the gun, using the current direction/position of this entity
         gun.Shoot(_rigidBody.rotation, _rigidBody.position);
+    }
+
+    public void Respawn(Vector2 pos) {
+        // Reactivates this enemy with new information
+        gameObject.SetActive(true);
+        // Set position
+        gameObject.GetComponent<Transform>().position = new Vector3(pos.x, 0.0f, pos.y);
+        // Set stats
+        health = maxHealth;
     }
 
     public abstract void CalculateSteeringForces();

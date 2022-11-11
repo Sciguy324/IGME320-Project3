@@ -6,9 +6,6 @@ public class Enemy : GenericEntity
 {
     public int attackDamage;
     public GenericEntity targetEntity;
-    public SpawnManager spawnManager;
-
-    public Player player;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +23,7 @@ public class Enemy : GenericEntity
     {
         Vector3 ultimateForce = Vector3.zero;
 
-        ultimateForce += Seek(player);
+        ultimateForce += Seek(targetEntity);
 
         ultimateForce += Seperate(manager.enemies);
 
@@ -35,6 +32,11 @@ public class Enemy : GenericEntity
         ultimateForce = Vector3.ClampMagnitude(ultimateForce, maxForce);
 
         ApplyForce(ultimateForce);
+    }
+
+    public override void Die() {
+        // Deactivate this entity
+        gameObject.SetActive(false);
     }
 
 }
