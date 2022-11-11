@@ -7,11 +7,13 @@ public class Gun : MonoBehaviour
     private List<Bullet> magazine;
     public int maxMagazineSize;
     public float shotSpread;
+    public Transform _transform;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        magazine = new List<Bullet>();
+        _transform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
@@ -29,8 +31,13 @@ public class Gun : MonoBehaviour
         return magazine.Count;
     }
 
-    public void Shoot(float angleDegrees, Vector2 origin) {
+    public void Shoot() {
         // Shoots the gun
+        Debug.Log("Pew pew!");
+
+        // Get firing angle and position
+        Vector2 origin = _transform.position;
+        float angleDegrees = _transform.eulerAngles.z;
 
         // Only fire if enough bullets are available
         if (BulletsRemaining() > 0) {

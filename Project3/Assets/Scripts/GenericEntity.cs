@@ -338,7 +338,9 @@ public abstract class GenericEntity : MonoBehaviour
 
     public void FireGun() {
         // Shoot the gun, using the current direction/position of this entity
-        gun.Shoot(_rigidBody.rotation, _rigidBody.position);
+        if (gun != null) {
+            gun.Shoot();
+        }
     }
 
     public void Respawn(Vector2 pos) {
