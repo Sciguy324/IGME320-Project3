@@ -161,7 +161,7 @@ public abstract class GenericEntity : MonoBehaviour
             }
         }
 
-        return new Vector2(targetX, targetY);
+        return new Vector3(targetX, targetY, 0.0f);
     }
 
     protected Vector3 StayInBounds()
@@ -278,7 +278,7 @@ public abstract class GenericEntity : MonoBehaviour
     /// <returns>A force that will turn the entity object towards a specific target GenericEntity object</returns>
     public Vector3 Seek(GenericEntity targetEntity)
     {
-        return Seek(targetEntity.position);
+        return Seek(targetEntity.transform.position);
     }
 
     public Vector3 Flee(Vector3 targetPosition)

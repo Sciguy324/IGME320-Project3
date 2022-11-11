@@ -8,22 +8,20 @@ public class SpawnManager : MonoBehaviour
     public float minSpawnRadius;
     public float spawnSpread;
     public int enemySpawnCount;
-    public GameObject SurroundEntityPrefab;
-    private Player SurroundEntity;
+    public GenericEntity SurroundEntity;
     private List<Enemy> SpawnedEnemies = new List<Enemy>();
 
     // Start is called before the first frame update
     void Start()
     {
         // Test spawn
-        SpawnPlayer();
         SpawnEnemies();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log(SurroundEntity.transform.position);
     }
 
     // Spawns more enemies
@@ -57,16 +55,11 @@ public class SpawnManager : MonoBehaviour
             int randIndex = Random.Range(0, SpawnableEnemies.Count);
             Debug.Log(SpawnableEnemies[randIndex].name);
             Enemy newEnemy = Instantiate(SpawnableEnemies[randIndex], RandPos(spawnCenter), Quaternion.identity);
+            newEnemy.targetEntity = SurroundEntity;
 
             // Add to list
             SpawnedEnemies.Add(newEnemy);
         }
-    }
-
-    void SpawnPlayer()
-    {
-        Player player = Instantiate(SurroundEntityPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
-        SurroundEntity = player;
     }
 
     // Pick a random location, used for picking where to spawn enemies

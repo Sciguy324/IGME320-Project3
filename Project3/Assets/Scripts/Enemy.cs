@@ -19,7 +19,7 @@ public class Enemy : GenericEntity
 
         ultimateForce = Vector3.ClampMagnitude(ultimateForce, maxForce);
 
-        Debug.Log("Ultimate Force for Enemy:" + ultimateForce);
+        //Debug.Log("Ultimate Force for Enemy:" + ultimateForce);
 
         ApplyForce(ultimateForce);
     }
