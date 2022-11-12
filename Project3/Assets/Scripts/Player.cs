@@ -7,23 +7,7 @@ public class Player : GenericEntity
     public int xp;
     public float reloadSpeed;
     private float invincibilityTime = 0.0f;
-    
-    //singlton code
-    private static Player instance;
-    public static Player Instance { get; private set; }
-    private void Awake()
-    {
-        // If there is an instance, and it's not me, delete myself.
 
-        if (Instance != null && Instance != this)
-        {
-            Destroy(this);
-        }
-        else
-        {
-            Instance = this;
-        }
-    }
     // Start is called before the first frame update
     void Start()
     {
@@ -48,10 +32,7 @@ public class Player : GenericEntity
         //Look at mouse
         LookAtMouse();
         Move();
-        if (Input.GetMouseButtonDown(0))
-        {
-            gun.Shoot();
-        }
+
     }
 
     private void LookAtMouse()

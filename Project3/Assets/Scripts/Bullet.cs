@@ -18,11 +18,24 @@ public class Bullet : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-   
+    public void Shoot(float degree, Vector2 origin) {
+        // Activate bullet
+        gameObject.SetActive(true);
+
+        // Set position
+        _rigidbody.position = origin;
+
+        // Set velocity vector
+        Vector2 direction = new Vector2(Mathf.Cos(Mathf.Deg2Rad*degree), Mathf.Sin(Mathf.Deg2Rad*degree));
+        _rigidbody.velocity = speed * direction;
+
+        // Set the number of enemies that can be pierced
+        piercesRemaining = maxPierces;
+    }
 
     void returnToOrigin() {
         // Sends the bullet back to whence it came
-        sender.ReturnBullet(this.gameObject);
+
         // Disable the bullet game object
         gameObject.SetActive(false);
         
@@ -43,9 +56,6 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x> sender.transform.position.x+30 || transform.position.y > sender.transform.position.y + 30 || transform.position.x < sender.transform.position.x  -30 || transform.position.y < sender.transform.position.y - 30)
-        {
-            returnToOrigin();
-        }
+        
     }
 }
