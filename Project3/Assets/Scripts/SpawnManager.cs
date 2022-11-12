@@ -21,7 +21,7 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(SurroundEntity.transform.position);
+        
     }
 
     // Spawns more enemies

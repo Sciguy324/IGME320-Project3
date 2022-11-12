@@ -336,6 +336,12 @@ public abstract class GenericEntity : MonoBehaviour
         // FIXME: Where does the old gun go?
     }
 
+    public void FireGun() {
+        // Shoot the gun, using the current direction/position of this entity
+        if (gun != null) {
+            gun.Shoot();
+        }
+    }
 
     public void Respawn(Vector2 pos) {
         // Reactivates this enemy with new information

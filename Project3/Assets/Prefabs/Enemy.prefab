@@ -9,7 +9,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -6713376892415264759, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_BodyType
-      value: 1
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -6713376892415264759, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -4992438989061296743, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_Size.x
