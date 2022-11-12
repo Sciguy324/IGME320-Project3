@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: gun
       value: 
-      objectReference: {fileID: 1366762754}
+      objectReference: {fileID: 0}
     - target: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: arena
       value: 
@@ -356,7 +356,7 @@ PrefabInstance:
     - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
       propertyPath: SurroundEntity
       value: 
-      objectReference: {fileID: 1472098790}
+      objectReference: {fileID: 1350515126}
     - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
       propertyPath: minSpawnRadius
       value: 3
@@ -423,20 +423,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b53311738fdaa44c994e89776813285, type: 3}
---- !u!114 &1366762754 stripped
+--- !u!114 &1350515126 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7718474000079205666, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
-  m_PrefabInstance: {fileID: 194637770}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29497e55d1fd27e4d85e2f77f62cf904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1472098790 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+  m_CorrespondingSourceObject: {fileID: 3757669040453270146, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
   m_PrefabInstance: {fileID: 194637770}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}

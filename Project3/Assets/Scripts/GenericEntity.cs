@@ -321,6 +321,9 @@ public abstract class GenericEntity : MonoBehaviour
         health -= amount;
 
         // Handle the case of zero-health
+        if (health <= 0) {
+            Die();
+        }
 
         // Damage occurred
         return true;

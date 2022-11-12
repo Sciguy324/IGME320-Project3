@@ -17,8 +17,6 @@ public class Gun : MonoBehaviour
     void Start()
     {
         objectMagazine = new List<GameObject>();
-
-
     }
 
     // Update is called once per frame
@@ -37,9 +35,6 @@ public class Gun : MonoBehaviour
 
         if (currentBulletCount > 0)
         {
-
-
-
             // Shoots the gun
             GameObject bullet;
             //if there are objects ready to be used, use them
