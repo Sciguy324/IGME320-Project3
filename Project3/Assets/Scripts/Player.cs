@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : GenericEntity
 {
     public int xp;
+    public int nextLevelEXP =3;
     public float reloadSpeed;
     private float invincibilityTime = 0.0f;
     
@@ -85,5 +86,17 @@ public class Player : GenericEntity
     public override void CalculateSteeringForces()
     {
 
+    }
+
+    public void GainEXP(int value)
+    {
+        xp += value;
+        if (xp >= nextLevelEXP)
+        {
+            //Level Up
+            GameManager.Instance.LevelUp();
+            nextLevelEXP = nextLevelEXP * 2;
+
+        }
     }
 }

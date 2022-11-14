@@ -6,7 +6,7 @@ public class Enemy : GenericEntity
 {
     public int attackDamage;
     public GenericEntity targetEntity;
-
+    public int expValue;
     public override void CalculateSteeringForces()
     {
         Vector3 ultimateForce = Vector3.zero;
@@ -27,6 +27,7 @@ public class Enemy : GenericEntity
     public override void Die() {
         // Deactivate this entity
         gameObject.SetActive(false);
+        GameManager.Instance.SpawnEXP(gameObject.transform, expValue);
     }
 
 }
