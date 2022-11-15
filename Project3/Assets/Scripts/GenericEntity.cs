@@ -66,10 +66,10 @@ public abstract class GenericEntity : MonoBehaviour
         // TODO: UPDATE IN TERMS OF THE ACTUAL ARENA OBJECT IN THE UNITY SCENE
         // arena = GameObject.Find("Plane");
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        minX = (arena.transform.position.x - (arena.transform.localScale.x / 2)) * 10;
-        maxX = (arena.transform.position.x + (arena.transform.localScale.x / 2)) * 10;
-        minY = (arena.transform.position.y - (arena.transform.localScale.y / 2)) * 10;
-        maxY = (arena.transform.position.y + (arena.transform.localScale.y / 2)) * 10;
+        minX = (arena.transform.position.x - (arena.transform.localScale.x / 2)) * 1.0f;
+        maxX = (arena.transform.position.x + (arena.transform.localScale.x / 2)) * 1.0f;
+        minY = (arena.transform.position.y - (arena.transform.localScale.y / 2)) * 1.0f;
+        maxY = (arena.transform.position.y + (arena.transform.localScale.y / 2)) * 1.0f;
         radius = sprite.bounds.extents.x;
         //randomAngle = Random.Range(0, 360);
     }
@@ -80,9 +80,37 @@ public abstract class GenericEntity : MonoBehaviour
         CalculateSteeringForces();
 
         // This is needed for all entities
-
         UpdatePosition();
+        WrapAround();
         SetTransform();
+
+        // Debug wrap-around visualization
+        float w = maxX - minX;
+        float h = maxY - minY;
+        DebugBox(0.0f, 0.0f);
+        DebugBox(w, 0.0f);
+        DebugBox(-w, 0.0f);
+        DebugBox(0.0f, h);
+        DebugBox(0.0f, -h);
+        DebugBox(w, h);
+        DebugBox(w, -h);
+        DebugBox(-w, h);
+        DebugBox(-w, -h);
+    }
+
+    void DebugBox(float dx, float dy) {
+        Vector2 pos = (Vector2)position + new Vector2(dx, dy);
+        Debug.DrawLine(new Vector2(pos.x - 1, pos.y - 1),
+                       new Vector2(pos.x - 1, pos.y + 1));
+
+        Debug.DrawLine(new Vector2(pos.x - 1, pos.y + 1),
+                       new Vector2(pos.x + 1, pos.y + 1));
+
+        Debug.DrawLine(new Vector2(pos.x + 1, pos.y + 1),
+                       new Vector2(pos.x + 1, pos.y - 1));
+
+        Debug.DrawLine(new Vector2(pos.x + 1, pos.y - 1),
+                       new Vector2(pos.x - 1, pos.y - 1));
     }
 
     /// <summary>
@@ -125,7 +153,7 @@ public abstract class GenericEntity : MonoBehaviour
     /// <summary>
     /// Sets the vehicle's transform to the position set in UpdatePosition()
     /// </summary>
-    private void SetTransform()
+    public void SetTransform()
     {
         transform.position = position;
     }
@@ -164,26 +192,26 @@ public abstract class GenericEntity : MonoBehaviour
         return new Vector3(targetX, targetY, 0.0f);
     }
 
-    protected Vector3 StayInBounds()
+    // Wraps the entity's position around
+    void WrapAround()
     {
-        //arena.GetComponent<SpriteRenderer>()
-        Vector3 futurePos = new Vector3(1.0f, 1.0f, 1.0f); //GetFuturePosition(1);
-        //Vector3 posToFlee = boundaries.ClosestPoint(position);
-        //float distBetween = Vector3.Distance(position, posToFlee);
-        //distBetween = Mathf.Max(distBetween, 0.001f);
-        if (position.x > maxX || position.x < minX ||
-            position.y > maxY || position.y < minY)
+        // Wrap x-position around
+        if (position.x > maxX)
         {
-            //return Seek(posToFlee) * 2000;
-        }
-        else if (futurePos.x >= maxX || futurePos.x <= minX ||
-            futurePos.y >= maxY || futurePos.y <= minY)
+            position.x -= maxX - minX;
+        } else if (position.x < minX)
         {
-            //return Flee(posToFlee) * (1 / distBetween);
+            position.x += maxX - minX;
         }
 
-
-        return Vector3.zero;
+        // Wrap y-position around
+        if (position.y > maxY)
+        {
+            position.y -= maxY - minY;
+        } else if (position.y < minY)
+        {
+            position.y += maxY - minY;
+        }
     }
 
     /// <summary>
@@ -245,7 +273,10 @@ public abstract class GenericEntity : MonoBehaviour
     /// <param name="targetPosition">Position of the target that is being seeked</param>
     /// <returns>A force that will turn the vehicle object towards a specific target</returns>
     public Vector3 Seek(Vector3 targetPosition)
-    {
+    {   
+        // Compute replica position
+        targetPosition = trueNearestPosition(targetPosition);
+
         // calculating our desired velocity
         // a vector towards our targetPosition
         Vector3 desiredVelocity = targetPosition - position;
