@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -60,5 +61,20 @@ public class GameManager : MonoBehaviour
     public void LevelUp()
     {
         levelUpScreen.SetActive(true);
+    }
+
+    public void GoToCredits()
+    {
+        SceneManager.LoadScene("Credits");
+    }
+
+    public void GoToHowToPlay()
+    {
+        SceneManager.LoadScene("HowToPlay");
+    }
+
+    public void GoToGame()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }
