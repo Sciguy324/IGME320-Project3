@@ -12,19 +12,13 @@ public abstract class GenericEntity : MonoBehaviour
     protected Vector3 velocity; // The velocity of the entity
     protected Vector3 acceleration; // The acceleration of the entity
     protected GameManager manager; // The manager for the entire game, a reference to it
-    public GameObject arena;
+    public Platform arena;
 
     private float radius; // Radius of entity
 
     public SpriteRenderer sprite;
 
     public float Radius => radius; // Accessor for the radius variable
-
-    // The bounds of the level/screen
-    protected float minX;
-    protected float maxX;
-    protected float minY;
-    protected float maxY;
 
     private Vector3 forward = Vector3.forward; // Vector3 that represents forward direction
     private Vector3 right = Vector3.right; // Vector3 that represents right direction
@@ -63,15 +57,9 @@ public abstract class GenericEntity : MonoBehaviour
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
-        // TODO: UPDATE IN TERMS OF THE ACTUAL ARENA OBJECT IN THE UNITY SCENE
-        // arena = GameObject.Find("Plane");
+        arena = GameObject.Find("Platform").GetComponent<Platform>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        minX = (arena.transform.position.x - (arena.transform.localScale.x / 2)) * 1.0f;
-        maxX = (arena.transform.position.x + (arena.transform.localScale.x / 2)) * 1.0f;
-        minY = (arena.transform.position.y - (arena.transform.localScale.y / 2)) * 1.0f;
-        maxY = (arena.transform.position.y + (arena.transform.localScale.y / 2)) * 1.0f;
         radius = sprite.bounds.extents.x;
-        //randomAngle = Random.Range(0, 360);
     }
 
     // Update is called once per frame
@@ -85,8 +73,8 @@ public abstract class GenericEntity : MonoBehaviour
         SetTransform();
 
         // Debug wrap-around visualization
-        float w = maxX - minX;
-        float h = maxY - minY;
+        float w = arena.width();
+        float h = arena.height();
         DebugBox(0.0f, 0.0f);
         DebugBox(w, 0.0f);
         DebugBox(-w, 0.0f);
@@ -158,60 +146,10 @@ public abstract class GenericEntity : MonoBehaviour
         transform.position = position;
     }
 
-    // Determines the closest replica target position of the provided target position
-    Vector3 trueNearestPosition(Vector3 targetPosition)
-    {
-        float targetX = targetPosition.x;
-        float targetY = targetPosition.y;
-
-        float width = maxX-minX;
-        float height = maxY-minY;
-
-        // Find closest x-position
-        if (Mathf.Abs(targetPosition.x - position.x) > width/2)
-        {
-            if (targetPosition.x > position.x)
-            {
-                targetX -= width;
-            } else {
-                targetX += width;
-            }
-        }
-
-        // Find closest y-position
-        if (Mathf.Abs(targetPosition.y - position.y) > height/2)
-        {
-            if (targetPosition.y > position.y)
-            {
-                targetY -= height;
-            } else {
-                targetY += height;
-            }
-        }
-
-        return new Vector3(targetX, targetY, 0.0f);
-    }
-
     // Wraps the entity's position around
     void WrapAround()
     {
-        // Wrap x-position around
-        if (position.x > maxX)
-        {
-            position.x -= maxX - minX;
-        } else if (position.x < minX)
-        {
-            position.x += maxX - minX;
-        }
-
-        // Wrap y-position around
-        if (position.y > maxY)
-        {
-            position.y -= maxY - minY;
-        } else if (position.y < minY)
-        {
-            position.y += maxY - minY;
-        }
+        position = arena.WrappedPosition(position);
     }
 
     /// <summary>
@@ -275,7 +213,7 @@ public abstract class GenericEntity : MonoBehaviour
     public Vector3 Seek(Vector3 targetPosition)
     {   
         // Compute replica position
-        targetPosition = trueNearestPosition(targetPosition);
+        targetPosition = arena.trueNearestPosition(position, targetPosition);
 
         // calculating our desired velocity
         // a vector towards our targetPosition

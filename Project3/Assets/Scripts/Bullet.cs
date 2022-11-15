@@ -10,6 +10,8 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private int piercesRemaining = 0;
     public Gun sender;
+    public Platform arena;
+    private float liveTime = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +27,7 @@ public class Bullet : MonoBehaviour
         sender.ReturnBullet(this.gameObject);
         // Disable the bullet game object
         gameObject.SetActive(false);
-        
+        liveTime = 0.0f;
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
@@ -43,7 +45,14 @@ public class Bullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x> sender.transform.position.x+30 || transform.position.y > sender.transform.position.y + 30 || transform.position.x < sender.transform.position.x  -30 || transform.position.y < sender.transform.position.y - 30)
+        // Wrap position around
+        transform.position = arena.WrappedPosition(transform.position);
+
+        // Increment timer
+        liveTime += Time.fixedDeltaTime;
+
+        // End if alive to long
+        if(liveTime > 3.0f)
         {
             returnToOrigin();
         }

@@ -33,41 +33,14 @@ public class Player : GenericEntity
 
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        // TODO: UPDATE IN TERMS OF THE ACTUAL ARENA OBJECT IN THE UNITY SCENE
-        // arena = GameObject.Find("Plane");
+        arena = GameObject.Find("Platform").GetComponent<Platform>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
-        minX = (arena.transform.position.x - (arena.transform.localScale.x / 2)) * 1.0f;
-        maxX = (arena.transform.position.x + (arena.transform.localScale.x / 2)) * 1.0f;
-        minY = (arena.transform.position.y - (arena.transform.localScale.y / 2)) * 1.0f;
-        maxY = (arena.transform.position.y + (arena.transform.localScale.y / 2)) * 1.0f;
-        //randomAngle = Random.Range(0, 360);
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
     }
 
     void WrapAround()
     {
-        Vector2 offset = new Vector2(0.0f, 0.0f);
-
-        // Wrap x-position around
-        if (transform.position.x > maxX)
-        {
-            offset.x -= maxX - minX;
-        } else if (transform.position.x < minX)
-        {
-            offset.x += maxX - minX;
-        }
-
-        // Wrap y-position around
-        if (transform.position.y > maxY)
-        {
-            offset.y -= maxY - minY;
-        } else if (position.y < minY)
-        {
-            offset.y += maxY - minY;
-        }
-
-        // Apply offset
-        transform.position = transform.position + (Vector3)offset;
+        transform.position = arena.WrappedPosition(transform.position);
     }
 
     // Update is called once per frame

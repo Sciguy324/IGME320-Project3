@@ -1,13 +1,9 @@
 fileFormatVersion: 2
-guid: ac8ce93880d03fd4d9a95f7341c68aa3
+guid: 975356d8474abc6469549a6859b630d6
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - arena: {instanceID: 0}
-  - sprite: {instanceID: 0}
-  - gun: {instanceID: 0}
-  - _rigidBody: {instanceID: 0}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

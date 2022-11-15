@@ -51,6 +51,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 2301321589757031118, guid: 4c4f96d91fb9685498fd0bf56d2bb16b, type: 3}
   bulletSpeed: 20
   piercing: 1
+  isRealodingSprite: {fileID: 0}
 --- !u!212 &1719008620040445904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -252,7 +253,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   maxHealth: 1
-  arena: {fileID: 4506757067362272662, guid: e390d061273bb194083d8792bff54eec, type: 3}
+  arena: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
   sprite: {fileID: 0}
   mass: 1
   personalSpace: 1
@@ -261,6 +262,7 @@ MonoBehaviour:
   gun: {fileID: 5826014759737104123}
   _rigidBody: {fileID: -6713376892415264759}
   xp: 0
+  nextLevelEXP: 3
   reloadSpeed: 0
 --- !u!1 &7229174028820321126
 GameObject:

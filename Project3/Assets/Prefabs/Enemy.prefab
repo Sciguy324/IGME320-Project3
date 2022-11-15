@@ -139,7 +139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   maxHealth: 1
-  arena: {fileID: 4506757067362272662, guid: e390d061273bb194083d8792bff54eec, type: 3}
+  arena: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
   sprite: {fileID: 0}
   mass: 1
   personalSpace: 1

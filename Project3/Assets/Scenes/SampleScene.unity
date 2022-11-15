@@ -1260,6 +1260,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3757669040453270146, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: arena
+      value: 
+      objectReference: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
+    - target: {fileID: 3757669040453270146, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: reloadSpeed
       value: 2
       objectReference: {fileID: 0}
@@ -3234,6 +3238,22 @@ PrefabInstance:
     - target: {fileID: 4506757067362272662, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_Name
       value: Platform
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
+      propertyPath: maxX
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
+      propertyPath: maxY
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
+      propertyPath: minX
+      value: -26
+      objectReference: {fileID: 0}
+    - target: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
+      propertyPath: minY
+      value: -25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e390d061273bb194083d8792bff54eec, type: 3}
