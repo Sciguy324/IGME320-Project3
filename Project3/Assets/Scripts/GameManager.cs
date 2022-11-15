@@ -12,6 +12,11 @@ public class GameManager : MonoBehaviour
     public GameObject levelUpScreen;
 
     private static GameManager instance;
+
+    //spawn related
+    public SpawnManager spawnManager;
+    public float spawnTime = 5f;
+    public int nextSpawnCount =3;
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -30,7 +35,8 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(SpawnTimer());
+
     }
 
     // Update is called once per frame
@@ -76,5 +82,20 @@ public class GameManager : MonoBehaviour
     public void GoToGame()
     {
         SceneManager.LoadScene("SampleScene");
+    }
+
+    IEnumerator SpawnTimer()
+    {
+        yield return new WaitForSeconds(spawnTime);
+        if(spawnTime>1.5)
+        {
+            spawnTime += -0.1f;
+        }
+        spawnManager.SpawnEnemies(nextSpawnCount);
+        if (nextSpawnCount < 20)
+        {
+            nextSpawnCount++;
+        }
+        StartCoroutine(SpawnTimer());
     }
 }

@@ -1321,6 +1321,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+--- !u!114 &195258381 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
+  m_PrefabInstance: {fileID: 1259027749}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055694426bcf50445bbdd3ecc3eebb46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &196618104
 GameObject:
   m_ObjectHideFlags: 0
@@ -8882,7 +8893,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
       propertyPath: spawnSpread
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
       propertyPath: SurroundEntity
@@ -8890,7 +8901,7 @@ PrefabInstance:
       objectReference: {fileID: 1350515126}
     - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
       propertyPath: minSpawnRadius
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
       propertyPath: enemySpawnCount
@@ -14307,9 +14318,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: spawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: spawnManager
+      value: 
+      objectReference: {fileID: 195258381}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: levelUpScreen
       value: 
       objectReference: {fileID: 79768000}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: nextSpawnCount
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4532233818817016972, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: m_Name
       value: GameManager

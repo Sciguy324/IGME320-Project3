@@ -347,12 +347,14 @@ public abstract class GenericEntity : MonoBehaviour
     }
 
     public void Respawn(Vector2 pos) {
-        // Reactivates this enemy with new information
-        gameObject.SetActive(true);
+    
         // Set position
-        gameObject.GetComponent<Transform>().position = new Vector3(pos.x, 0.0f, pos.y);
+        gameObject.transform.position = pos;
         // Set stats
         health = maxHealth;
+        // Reactivates this enemy with new information
+
+        gameObject.SetActive(true);
     }
 
     public abstract void CalculateSteeringForces();
