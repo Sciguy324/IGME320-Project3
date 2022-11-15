@@ -91,7 +91,7 @@ public class GameManager : MonoBehaviour
         {
             spawnTime += -0.1f;
         }
-        spawnManager.SpawnEnemies(nextSpawnCount);
+        spawnManager.SpawnEnemiesCount(nextSpawnCount);
         if (nextSpawnCount < 20)
         {
             nextSpawnCount++;
