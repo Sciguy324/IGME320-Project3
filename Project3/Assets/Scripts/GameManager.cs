@@ -44,18 +44,19 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void SpawnEXP(Transform transform, int value)
+    public void SpawnEXP(Vector3 position, int value)
     {
         GameObject expObject;
         if (expObjectMagazine.Count != 0)
         {
             expObject = expObjectMagazine[0];
+            expObject.transform.position = position;
             expObject.SetActive(true);
             expObjectMagazine.Remove(expObject);
         }
         else
         {
-            expObject = Instantiate(expPrefeb, transform.position, transform.rotation);
+            expObject = Instantiate(expPrefeb, position, Quaternion.identity);
         }
         expObject.GetComponent<ExpScript>().value = value;
     }

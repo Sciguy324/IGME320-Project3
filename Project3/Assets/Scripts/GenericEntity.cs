@@ -350,6 +350,7 @@ public abstract class GenericEntity : MonoBehaviour
     
         // Set position
         position = pos;
+        GetComponent<Transform>().position = pos;
         
         // Set stats
         health = maxHealth;

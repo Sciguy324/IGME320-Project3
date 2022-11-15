@@ -27,7 +27,7 @@ public class Enemy : GenericEntity
     public override void Die() {
         // Deactivate this entity
         gameObject.SetActive(false);
-        GameManager.Instance.SpawnEXP(gameObject.transform, expValue);
+        GameManager.Instance.SpawnEXP(position, expValue);
     }
 
 }

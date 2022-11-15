@@ -16,6 +16,7 @@ public class ExpScript : MonoBehaviour
     {
         
     }
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //Check if collision is with player if it is, collect the xp
