@@ -76,7 +76,10 @@ public class SpawnManager : MonoBehaviour
                 if (!entity.gameObject.activeSelf)
                 {
                     toSpawn--;
+                    Debug.Log("enemies origin: " + entity.gameObject.transform.position);
                     Vector2 respawnPos = RandPos(spawnCenter);
+                    Debug.Log("enemies spawn point: " + respawnPos);
+
                     entity.Respawn(respawnPos);
                 }
 
