@@ -29,8 +29,6 @@ public class Player : GenericEntity
     // Start is called before the first frame update
     void Start()
     {
-        speed = 10;
-
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
         arena = GameObject.Find("Platform").GetComponent<Platform>();
@@ -62,6 +60,7 @@ public class Player : GenericEntity
     private void LookAtMouse()
     {
         Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = arena.trueNearestPosition(transform.position, mousePos);
         transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
     }
     private void Move()

@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour
 
     //spawn related
     public SpawnManager spawnManager;
-    public float spawnTime = 5f;
+    public float spawnTime = 8f;
     public int nextSpawnCount =3;
+    //every spawn, up this by 1, when it gets to 3, add 1 additional enemy to spawn
+    int upTickEnemySpawnCount = 0;
     public static GameManager Instance { get; private set; }
     private void Awake()
     {
@@ -59,6 +61,7 @@ public class GameManager : MonoBehaviour
             expObject = Instantiate(expPrefeb, position, Quaternion.identity);
         }
         expObject.GetComponent<ExpScript>().value = value;
+        spawnManager.currentEnemyCount--;
     }
     public void ReturnEXP(GameObject exp)
     {
@@ -90,13 +93,15 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(spawnTime);
         if(spawnTime>1.5)
         {
-            spawnTime += -0.1f;
+            spawnTime += -0.05f;
         }
-        //spawnManager.SpawnEnemiesCount(nextSpawnCount);
-        if (nextSpawnCount < 20)
+        spawnManager.SpawnEnemiesCount(nextSpawnCount);
+        if (nextSpawnCount < 20 && upTickEnemySpawnCount==2)
         {
+            upTickEnemySpawnCount = 0;
             nextSpawnCount++;
         }
+        upTickEnemySpawnCount++;
         StartCoroutine(SpawnTimer());
     }
 }

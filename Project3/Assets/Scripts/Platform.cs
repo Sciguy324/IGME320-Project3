@@ -30,6 +30,16 @@ public class Platform : MonoBehaviour
         return maxY - minY;
     }
 
+    // Returns the closest square-distance between two points in a wrapped coordinate system
+    public float TrueDistanceSquared(Vector3 firstPosition, Vector3 secondPosition)
+    {
+        // Find replica position of second position
+        Vector3 trueSecondPosition = trueNearestPosition(firstPosition, secondPosition);
+
+        // Get distance between two points and return the result
+        return (trueSecondPosition - firstPosition).sqrMagnitude;
+    }
+
     public Vector3 trueNearestPosition(Vector3 firstPosition, Vector3 targetPosition)
     {
         Vector3 offset = new Vector3(0.0f, 0.0f, 0.0f);
