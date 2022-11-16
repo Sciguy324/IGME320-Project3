@@ -52,7 +52,7 @@ public class VisualCopy : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         transform.position = ParentTransform.position + Offset;
         transform.rotation = ParentTransform.rotation;

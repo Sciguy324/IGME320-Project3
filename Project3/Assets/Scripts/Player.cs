@@ -60,6 +60,7 @@ public class Player : GenericEntity
     private void LookAtMouse()
     {
         Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mousePos = arena.trueNearestPosition(transform.position, mousePos);
         transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
     }
     private void Move()
