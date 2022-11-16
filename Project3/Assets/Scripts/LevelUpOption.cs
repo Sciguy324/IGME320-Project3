@@ -23,9 +23,11 @@ public class LevelUpOption : MonoBehaviour
         {
             case "healthup":
                 Player.Instance.maxHealth++;
+                upgradeInfo = "Increases Henry's maximum health to allow him to take more punishment!";
                 break;
             case "bulletnumber":
                 Player.Instance.gun.maxMagazineSize++;
+                upgradeInfo = "Increase the amount of charges that Henry can fire before reloading";
                 break;
             default:
                 break;
