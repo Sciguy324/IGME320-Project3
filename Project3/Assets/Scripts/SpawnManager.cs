@@ -10,7 +10,7 @@ public class SpawnManager : MonoBehaviour
     public int enemySpawnCount;
     public GenericEntity SurroundEntity;
     private List<Enemy> SpawnedEnemies = new List<Enemy>();
-
+    public int currentEnemyCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +32,7 @@ public class SpawnManager : MonoBehaviour
     //Option for spawning spesific amount
     public void SpawnEnemiesCount(int enemiesToSpawn)
     {
+
         int toSpawn = enemiesToSpawn;
         Vector2 spawnCenter = SurroundEntity.transform.position;
 
@@ -42,10 +43,15 @@ public class SpawnManager : MonoBehaviour
             {
                 if (!entity.gameObject.activeSelf)
                 {
+                    if (currentEnemyCount > 100)
+                    {
+                        return;
+                    }
                     toSpawn--;
                     Vector2 respawnPos = RandPos(spawnCenter);
 
                     entity.Respawn(respawnPos);
+                    currentEnemyCount++;
                 }
 
                 if (toSpawn == 0)
@@ -60,6 +66,10 @@ public class SpawnManager : MonoBehaviour
         // Spawn a single enemy
         for (int i = 0; i < toSpawn; i++)
         {
+            if (currentEnemyCount > 100)
+            {
+                return;
+            }
             // Randomly pick enemy type and position
             int randIndex = Random.Range(0, SpawnableEnemies.Count);
             Debug.Log(SpawnableEnemies[randIndex].name);
@@ -68,6 +78,8 @@ public class SpawnManager : MonoBehaviour
 
             // Add to list
             SpawnedEnemies.Add(newEnemy);
+            currentEnemyCount++;
+
         }
     }
 
