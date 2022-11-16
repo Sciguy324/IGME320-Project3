@@ -49,6 +49,7 @@ public abstract class GenericEntity : MonoBehaviour
 
     public Gun gun;
     public Rigidbody2D _rigidBody;
+    public List<VisualCopy> visualCopies;
 
     // Start is called before the first frame update
     void Start()

@@ -29,8 +29,6 @@ public class Player : GenericEntity
     // Start is called before the first frame update
     void Start()
     {
-        speed = 10;
-
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
         arena = GameObject.Find("Platform").GetComponent<Platform>();

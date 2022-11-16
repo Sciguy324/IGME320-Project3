@@ -1239,6 +1239,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 277542826361868744, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: gun
       value: 
@@ -1278,6 +1282,10 @@ PrefabInstance:
     - target: {fileID: 7640208115546962065, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7659867096126559223, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: spriteRenderer
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8889001632118075000, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: m_RootOrder
