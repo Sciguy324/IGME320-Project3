@@ -147,6 +147,7 @@ MonoBehaviour:
   maxForce: 2
   gun: {fileID: 0}
   _rigidBody: {fileID: 1997354969597248600}
-  attackDamage: 0
+  visualCopies: []
+  attackDamage: 1
   targetEntity: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
   expValue: 1

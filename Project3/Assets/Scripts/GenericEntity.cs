@@ -6,7 +6,7 @@ public abstract class GenericEntity : MonoBehaviour
 {
     public float speed = 1.0f; // How fast the entity moves
     public int maxHealth = 1; // The default number of hearts the entity will have upon spawning
-    private int health; // The amount of health that the entity has, is a number instead of like the player who has hearts
+    protected int health; // The amount of health that the entity has, is a number instead of like the player who has hearts
     protected Vector3 position; // Position of the entity
     protected Vector3 direction; // The direction the entity is facing
     protected Vector3 velocity; // The velocity of the entity
