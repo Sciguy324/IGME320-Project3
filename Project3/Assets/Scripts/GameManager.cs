@@ -31,8 +31,7 @@ public class GameManager : MonoBehaviour
     int upTickEnemySpawnCount = 0;
     public static GameManager Instance { get; private set; }
 
-    //UI manager, in charge of showing health, timer, and current exp
-    public Gui Gui;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
