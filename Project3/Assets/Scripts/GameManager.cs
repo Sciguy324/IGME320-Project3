@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UIElements;
+using TMPro;
+
 
 public class GameManager : MonoBehaviour
 {
@@ -11,7 +15,13 @@ public class GameManager : MonoBehaviour
     public GameObject expPrefeb;
     public GameObject levelUpScreen;
 
+    public List<GameObject> buttonList; // List of all the button prefabs for the level up screen
+
     private static GameManager instance;
+
+    public GameObject option1; // Upgrade panel option 1
+    public GameObject option2; // Upgrade panel option 2
+    public GameObject option3; // Upgrade panel option 3
 
     //spawn related
     public SpawnManager spawnManager;
@@ -41,7 +51,6 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTimer());
-
     }
 
     // Update is called once per frame
@@ -73,6 +82,25 @@ public class GameManager : MonoBehaviour
     }
     public void LevelUp()
     {
+        // Randomly choose three different numbers (buttons from the List)
+        List<int> randList = new List<int>(); // Will hold the three random numbers
+        int counter = 0;
+        do
+        {
+            int randomNum = Random.Range(0, buttonList.Count - 1); // Random number between 0 and the last index of the buttonList
+            if(!randList.Contains(randomNum)) // If it isn't already chosen
+            {
+                randList.Add(randomNum); // Add it to the list of random numbers
+                counter++; // Adjust counter accordingly
+            }
+        } while (counter != 3);
+
+        // Change the appropiate stuff for option1
+        GameObject option1Text = option1.transform.GetChild(0).gameObject;
+        GameObject option1Button = option1.transform.GetChild(1).gameObject;
+
+        //option1Text.GetComponent<TextMesh>
+       
         levelUpScreen.SetActive(true);
     }
 

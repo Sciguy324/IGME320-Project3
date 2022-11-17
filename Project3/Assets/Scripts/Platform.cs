@@ -30,6 +30,11 @@ public class Platform : MonoBehaviour
         return maxY - minY;
     }
 
+    public Vector3 center()
+    {
+        return new Vector3((minX + maxX)/2, (minY + maxY)/2, 0.0f);
+    }
+
     // Returns the closest square-distance between two points in a wrapped coordinate system
     public float TrueDistanceSquared(Vector3 firstPosition, Vector3 secondPosition)
     {
