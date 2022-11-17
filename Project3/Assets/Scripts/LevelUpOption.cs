@@ -9,12 +9,17 @@ public class LevelUpOption : MonoBehaviour
     public string name;
     protected string upgradeInfo;
     protected Button button;
+
+    public Button Button
+    {
+        get { return button; }
+        set { button = value; }
+    }
     
     // Start is called before the first frame update
     void Start()
     {
         button = gameObject.GetComponent<Button>();
-        
     }
 
     public void ButtonClick()
