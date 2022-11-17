@@ -30,6 +30,9 @@ public class GameManager : MonoBehaviour
     //every spawn, up this by 1, when it gets to 3, add 1 additional enemy to spawn
     int upTickEnemySpawnCount = 0;
     public static GameManager Instance { get; private set; }
+
+    //UI manager, in charge of showing health, timer, and current exp
+    public Gui Gui;
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
