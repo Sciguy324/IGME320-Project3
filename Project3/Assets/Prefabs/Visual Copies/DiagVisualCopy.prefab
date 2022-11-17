@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &798984360987544194
+--- !u!1001 &8697732205023572343
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -8,7 +8,11 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -5095483391746560056, guid: 19ab1ad03a8fb564a9a6b24d91ab9e4b, type: 3}
-      propertyPath: Offset.x
+      propertyPath: visX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -5095483391746560056, guid: 19ab1ad03a8fb564a9a6b24d91ab9e4b, type: 3}
+      propertyPath: visY
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7250453852030387659, guid: 19ab1ad03a8fb564a9a6b24d91ab9e4b, type: 3}
@@ -57,7 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8342512453600798240, guid: 19ab1ad03a8fb564a9a6b24d91ab9e4b, type: 3}
       propertyPath: m_Name
-      value: RightVisualCopy
+      value: DiagVisualCopy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 19ab1ad03a8fb564a9a6b24d91ab9e4b, type: 3}

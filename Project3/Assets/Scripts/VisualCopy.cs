@@ -6,14 +6,14 @@ public class VisualCopy : MonoBehaviour
 {
     private SpriteRenderer ParentSpriteRenderer;
     private Transform ParentTransform;
-    public Vector3 Offset;
     private Platform arena;
+    public bool visX;
+    public bool visY;
     
     // Start is called before the first frame update
     void Start()
     {
         arena = GameObject.Find("Platform").GetComponent<Platform>();
-        SetBoxDims(arena);
         GameObject parent = this.transform.parent.gameObject;
         ParentTransform = parent.GetComponent<Transform>();
         ParentSpriteRenderer = parent.GetComponent<SpriteRenderer>();
@@ -21,40 +21,37 @@ public class VisualCopy : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = ParentSpriteRenderer.sprite;
     }
 
-    // Sets the distance of the offset based on the provided box dimensions
-    public void SetBoxDims(Vector2 newDimensions)
-    {
-        Vector3 newOffset = new Vector3(0.0f, 0.0f, 0.0f);
+    private Vector3 ComputeOffset()
+    {   
+        // Determines where to place the visual copy when rendered
+        Vector3 Offset = new Vector3(0.0f, 0.0f, 0.0f);
 
-        if (Offset.x > 0.0f) {
-            newOffset.x = newDimensions.x;
-        } else if (Offset.x < 0.0f) {
-            newOffset.x = -newDimensions.x;
+        // Apply horizontal offset, if applicable
+        if (visX) {
+            if (ParentTransform.position.x < arena.center().x) {
+                Offset.x = arena.width();
+            } else {
+                Offset.x = -arena.width();
+            }
         }
 
-        if (Offset.y > 0.0f) {
-            newOffset.y = newDimensions.y;
-        } else if (Offset.y < 0.0f) {
-            newOffset.y = -newDimensions.y;
+        // Apply vertical offset, if applicable
+        if (visY)
+        {
+            if (ParentTransform.position.y < arena.center().y) {
+                Offset.y = arena.height();
+            } else {
+                Offset.y = -arena.height();
+            }
         }
 
-        Offset = newOffset;
-    }
-
-    public void SetBoxDims(float width, float height)
-    {
-        SetBoxDims(new Vector2(width, height));
-    }
-
-    public void SetBoxDims(Platform platform)
-    {
-        SetBoxDims(platform.width(), platform.height());
+        return Offset;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = ParentTransform.position + Offset;
+        transform.position = ParentTransform.position + ComputeOffset();
         transform.rotation = ParentTransform.rotation;
     }
 }

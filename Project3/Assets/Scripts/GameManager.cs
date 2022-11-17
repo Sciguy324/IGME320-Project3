@@ -123,7 +123,7 @@ public class GameManager : MonoBehaviour
         {
             spawnTime += -0.05f;
         }
-        spawnManager.SpawnEnemiesCount(nextSpawnCount);
+        //spawnManager.SpawnEnemiesCount(nextSpawnCount);
         if (nextSpawnCount < 20 && upTickEnemySpawnCount==2)
         {
             upTickEnemySpawnCount = 0;
