@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : GenericEntity
 {
     public int xp;
     public int nextLevelEXP =3;
     public float reloadSpeed;
-    private float invincibilityTime = 0.0f;
+    private float invincibilityTime = 1.0f;
+
+    private bool tempInves = false;
     
     //singlton code
     private static Player instance;
@@ -29,6 +32,7 @@ public class Player : GenericEntity
     // Start is called before the first frame update
     void Start()
     {
+        health = maxHealth;
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
         arena = GameObject.Find("Platform").GetComponent<Platform>();
@@ -75,15 +79,24 @@ public class Player : GenericEntity
         base.OnCollisionEnter2D(collision);
 
         // Additional handling: enemy collision
-        if (collision.gameObject.GetComponent<Enemy>()) {
+        if (collision.gameObject.GetComponent<Enemy>() && !tempInves) {
             Debug.Log("Ouch!");
             Damage(collision.gameObject.GetComponent<Enemy>().attackDamage);
+            StartCoroutine(tempshield());
         }
+    }
+    IEnumerator tempshield()
+    {
+        tempInves = true;
+        yield return new WaitForSeconds(invincibilityTime);
+        tempInves = false;
+
     }
 
     public override void Die()
     {
         Debug.Log("Oh no, I died!");
+        SceneManager.LoadScene("Credits");
     }
 
     public override void CalculateSteeringForces()
@@ -102,4 +115,5 @@ public class Player : GenericEntity
 
         }
     }
+    
 }
