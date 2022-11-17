@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7284944569092772707, guid: d4c63a2b8548f234f818a925d08c125c, type: 3}
+      propertyPath: name
+      value: healthup
+      objectReference: {fileID: 0}
     - target: {fileID: 7911061997297772284, guid: d4c63a2b8548f234f818a925d08c125c, type: 3}
       propertyPath: m_Name
       value: UpgradeButtonHealth

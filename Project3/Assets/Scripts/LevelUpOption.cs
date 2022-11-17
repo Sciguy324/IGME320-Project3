@@ -6,7 +6,7 @@ using UnityEngine.UIElements;
 public class LevelUpOption : MonoBehaviour
 {
     protected Sprite img;
-    protected string name;
+    public string name;
     protected string upgradeInfo;
     protected Button button;
     
@@ -17,9 +17,9 @@ public class LevelUpOption : MonoBehaviour
         
     }
 
-    public void ButtonClick(string upgradeName)
+    public void ButtonClick()
     {
-        switch (upgradeName)
+        switch (name)
         {
             case "healthup":
                 Player.Instance.maxHealth++;
@@ -28,6 +28,12 @@ public class LevelUpOption : MonoBehaviour
             case "bulletnumber":
                 Player.Instance.gun.maxMagazineSize++;
                 upgradeInfo = "Increase the amount of charges that Henry can fire before reloading";
+                break;
+            case "playerspeed":
+                Player.Instance.speed++;
+                break;
+            case "bulletspeed":
+                Player.Instance.gun.bulletSpeed++;
                 break;
             default:
                 break;

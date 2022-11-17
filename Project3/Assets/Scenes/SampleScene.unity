@@ -14032,7 +14032,7 @@ GameObject:
   - component: {fileID: 2067357350}
   - component: {fileID: 2067357349}
   m_Layer: 5
-  m_Name: Option 1 panel
+  m_Name: Option1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14373,6 +14373,26 @@ PrefabInstance:
       propertyPath: nextSpawnCount
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: buttonList.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: buttonList.Array.data[0]
+      value: 
+      objectReference: {fileID: 5595855244304354919, guid: 60d0a46912112f14fbfe1794736baad2, type: 3}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: buttonList.Array.data[1]
+      value: 
+      objectReference: {fileID: 6146096715826768312, guid: 7c582b35dda3fe2468c0b1ac66d2a3fd, type: 3}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: buttonList.Array.data[2]
+      value: 
+      objectReference: {fileID: 1980723435076653012, guid: ab5fcaf5744f3574b8df0e3c4ab93def, type: 3}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: buttonList.Array.data[3]
+      value: 
+      objectReference: {fileID: 6080154689771858099, guid: 1368c8e0f3bfd4145aaaff1c0e9cc40b, type: 3}
     - target: {fileID: 4532233818817016972, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: m_Name
       value: GameManager
