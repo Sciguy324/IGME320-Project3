@@ -11,7 +11,8 @@ public class Player : GenericEntity
     private float invincibilityTime = 1.0f;
 
     private bool tempInves = false;
-    
+    //GUI
+    public Gui playerGUI;
     //singlton code
     private static Player instance;
     public static Player Instance { get; private set; }
@@ -38,6 +39,7 @@ public class Player : GenericEntity
         arena = GameObject.Find("Platform").GetComponent<Platform>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        playerGUI.expText.text = "0 / " + nextLevelEXP.ToString();
     }
 
     void WrapAround()
@@ -112,8 +114,15 @@ public class Player : GenericEntity
             //Level Up
             GameManager.Instance.LevelUp();
             nextLevelEXP = nextLevelEXP * 2;
-
+            xp = 0;
         }
+        playerGUI.SetEXP(xp, nextLevelEXP);
     }
-    
+    public override bool Damage(int amount)
+    {
+        if(health-1 >= 0)
+        playerGUI.SetHelathUI(health-1);
+        return base.Damage(amount);
+    }
+
 }
