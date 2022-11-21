@@ -7,6 +7,13 @@ public class Enemy : GenericEntity
     public int attackDamage;
     public GenericEntity targetEntity;
     public int expValue;
+    public Sprite enemyVisuals;
+
+    private void OnEnable()
+    {
+        gameObject.GetComponent<SpriteRenderer>().sprite = enemyVisuals;
+
+    }
     public override void CalculateSteeringForces()
     {
         Vector3 ultimateForce = Vector3.zero;

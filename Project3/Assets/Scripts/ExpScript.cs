@@ -16,8 +16,8 @@ public class ExpScript : MonoBehaviour
     {
         
     }
-    
-    private void OnCollisionEnter2D(Collision2D collision)
+   
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         //Check if collision is with player if it is, collect the xp
         if(collision.gameObject.tag == "Player")

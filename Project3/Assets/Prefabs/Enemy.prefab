@@ -151,3 +151,4 @@ MonoBehaviour:
   attackDamage: 1
   targetEntity: {fileID: 957191527501792979, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
   expValue: 1
+  enemyVisuals: {fileID: -4795363162621231457, guid: 6d7cd4f7505dc674c891ca8946cfd98b, type: 3}
