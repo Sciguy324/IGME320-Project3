@@ -286,7 +286,7 @@ public abstract class GenericEntity : MonoBehaviour
         }
     }
 
-    public bool Damage(int amount) {
+    virtual public bool Damage(int amount) {
         // Applies damage to the entity
         health -= amount;
 
