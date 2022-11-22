@@ -443,7 +443,7 @@ PrefabInstance:
     - target: {fileID: 3757669040453270146, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: gunBaseForRotation
       value: 
-      objectReference: {fileID: 1121108933}
+      objectReference: {fileID: 1209019536}
     - target: {fileID: 7640208115546962065, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -1550,11 +1550,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!4 &1121108933 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 505722448426141635, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
-  m_PrefabInstance: {fileID: 194637770}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142688645
 GameObject:
   m_ObjectHideFlags: 0
@@ -1670,6 +1665,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1146756336}
   m_CullTransparentMesh: 1
+--- !u!4 &1209019536 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 537829162140154891, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+  m_PrefabInstance: {fileID: 194637770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1221535731
 GameObject:
   m_ObjectHideFlags: 0
