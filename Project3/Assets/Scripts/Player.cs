@@ -60,7 +60,7 @@ public class Player : GenericEntity
         Move();
         if (Input.GetMouseButtonDown(0))
         {
-            gun.Shoot();
+            gun.Shoot(gameObject.tag);
         }
 
         // Wrap-around position
