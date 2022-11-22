@@ -130,7 +130,7 @@ public class Player : GenericEntity
     public override void Die()
     {
         Debug.Log("Oh no, I died!");
-        SceneManager.LoadScene("Credits");
+        SceneManager.LoadScene("Lose Scene");
     }
 
     public override void CalculateSteeringForces()
