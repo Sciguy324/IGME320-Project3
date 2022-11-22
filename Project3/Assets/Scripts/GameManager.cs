@@ -122,21 +122,6 @@ public class GameManager : MonoBehaviour
         levelUpScreen.SetActive(true);
     }
 
-    public void GoToCredits()
-    {
-        SceneManager.LoadScene("Credits");
-    }
-
-    public void GoToHowToPlay()
-    {
-        SceneManager.LoadScene("HowToPlay");
-    }
-
-    public void GoToGame()
-    {
-        SceneManager.LoadScene("SampleScene");
-    }
-
     IEnumerator SpawnTimer()
     {
         yield return new WaitForSeconds(spawnTime);
@@ -164,6 +149,7 @@ public class GameManager : MonoBehaviour
         spawnTime = maxSpawnTime;
         nextSpawnCount = baseSpawnCount;
         yield return new WaitForSeconds(spawnRoundTime);
+        // Spawn in boss, and don't spawn anything else
 
     }
 }
