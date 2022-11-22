@@ -56,7 +56,7 @@ public class Gun : MonoBehaviour
         }
         else if(!isReloading)
         {
-            StartCoroutine( Reload());
+            StartCoroutine(Reload());
             return;
         }
     }

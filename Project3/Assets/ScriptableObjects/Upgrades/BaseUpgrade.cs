@@ -12,4 +12,9 @@ public class BaseUpgrade : ScriptableObject
     // Temporary test variables
     public float speedModifier;
     public float shootingModifier;
+
+    public void apply(Player player)
+    {
+        
+    }
 }
