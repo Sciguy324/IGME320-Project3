@@ -26,7 +26,12 @@ public class GameManager : MonoBehaviour
     //spawn related
     public SpawnManager spawnManager;
     public float spawnTime = 8f;
+    public float maxSpawnTime = 8f;
     public int nextSpawnCount =3;
+    public int baseSpawnCount = 3;
+
+    public int spawnRoundTime = 10;
+
     //every spawn, up this by 1, when it gets to 3, add 1 additional enemy to spawn
     int upTickEnemySpawnCount = 0;
     public static GameManager Instance { get; private set; }
@@ -50,6 +55,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTimer());
+        StartCoroutine(MainGameTimer());
+
     }
 
     // Update is called once per frame
@@ -145,5 +152,18 @@ public class GameManager : MonoBehaviour
         }
         upTickEnemySpawnCount++;
         StartCoroutine(SpawnTimer());
+    }
+    IEnumerator MainGameTimer()
+    {
+        yield return new WaitForSeconds(spawnRoundTime);
+        spawnManager.enemyLevelToSpawn++;
+        spawnTime = maxSpawnTime;
+        nextSpawnCount = baseSpawnCount;
+        yield return new WaitForSeconds(spawnRoundTime);
+        spawnManager.enemyLevelToSpawn++;
+        spawnTime = maxSpawnTime;
+        nextSpawnCount = baseSpawnCount;
+        yield return new WaitForSeconds(spawnRoundTime);
+
     }
 }

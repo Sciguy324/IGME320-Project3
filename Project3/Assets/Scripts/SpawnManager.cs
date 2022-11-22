@@ -9,13 +9,21 @@ public class SpawnManager : MonoBehaviour
     public float spawnSpread;
     public int enemySpawnCount;
     public GenericEntity SurroundEntity;
-    private List<Enemy> SpawnedEnemies = new List<Enemy>();
+    private List<Enemy> SpawnedEnemiesLevel1 = new List<Enemy>();
+    private List<Enemy> SpawnedEnemiesLevel2 = new List<Enemy>();
+    private List<Enemy> SpawnedEnemiesLevel3 = new List<Enemy>();
+    private List<List<Enemy>> enemiesLists;
+    public int enemyLevelToSpawn = 0;
+
     public int currentEnemyCount = 0;
     // Start is called before the first frame update
     void Start()
     {
+        //setting up spawn list arr
+        enemiesLists = new List<List<Enemy>>() { SpawnedEnemiesLevel1, SpawnedEnemiesLevel2, SpawnedEnemiesLevel3 };
         // Test spawn
         SpawnEnemies();
+
     }
 
     // Update is called once per frame
@@ -32,6 +40,7 @@ public class SpawnManager : MonoBehaviour
     //Option for spawning spesific amount
     public void SpawnEnemiesCount(int enemiesToSpawn)
     {
+        List<Enemy> currentSpawnList = enemiesLists[enemyLevelToSpawn];
 
         int toSpawn = enemiesToSpawn;
         Vector2 spawnCenter = SurroundEntity.transform.position;
@@ -39,7 +48,7 @@ public class SpawnManager : MonoBehaviour
         // Recycle existing gameobjects first
         if (SpawnableEnemies.Count > 0)
         {
-            foreach (Enemy entity in SpawnedEnemies)
+            foreach (Enemy entity in currentSpawnList)
             {
                 if (!entity.gameObject.activeSelf)
                 {
@@ -71,13 +80,12 @@ public class SpawnManager : MonoBehaviour
                 return;
             }
             // Randomly pick enemy type and position
-            int randIndex = Random.Range(0, SpawnableEnemies.Count);
-            Debug.Log(SpawnableEnemies[randIndex].name);
-            Enemy newEnemy = Instantiate(SpawnableEnemies[randIndex], RandPos(spawnCenter), Quaternion.identity);
+          
+            Enemy newEnemy = Instantiate(SpawnableEnemies[enemyLevelToSpawn], RandPos(spawnCenter), Quaternion.identity);
             newEnemy.targetEntity = SurroundEntity;
 
             // Add to list
-            SpawnedEnemies.Add(newEnemy);
+            currentSpawnList.Add(newEnemy);
             currentEnemyCount++;
 
         }
