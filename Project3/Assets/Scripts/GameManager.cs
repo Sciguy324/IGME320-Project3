@@ -26,13 +26,17 @@ public class GameManager : MonoBehaviour
     //spawn related
     public SpawnManager spawnManager;
     public float spawnTime = 8f;
+    public float maxSpawnTime = 8f;
     public int nextSpawnCount =3;
+    public int baseSpawnCount = 3;
+
+    public int spawnRoundTime = 10;
+
     //every spawn, up this by 1, when it gets to 3, add 1 additional enemy to spawn
     int upTickEnemySpawnCount = 0;
     public static GameManager Instance { get; private set; }
 
-    //UI manager, in charge of showing health, timer, and current exp
-    public Gui Gui;
+
     private void Awake()
     {
         // If there is an instance, and it's not me, delete myself.
@@ -51,6 +55,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SpawnTimer());
+        StartCoroutine(MainGameTimer());
+
     }
 
     // Update is called once per frame
@@ -98,9 +104,21 @@ public class GameManager : MonoBehaviour
         // Change the appropiate stuff for option1
         GameObject option1Text = option1.transform.GetChild(0).gameObject;
         GameObject option1Button = option1.transform.GetChild(1).gameObject;
+        option1Text.GetComponent<TextMeshProUGUI>().text = buttonList[randList[0]].name;
+        option1Button = buttonList[randList[0]];
 
-        //option1Text.GetComponent<TextMesh>
-       
+        // Change the appropiate stuff for option2
+        GameObject option2Text = option2.transform.GetChild(0).gameObject;
+        GameObject option2Button = option2.transform.GetChild(1).gameObject;
+        option2Text.GetComponent<TextMeshProUGUI>().text = buttonList[randList[1]].name;
+        option2Button = buttonList[randList[1]];
+
+        // Change the appropiate stuff for option1
+        GameObject option3Text = option3.transform.GetChild(0).gameObject;
+        GameObject option3Button = option3.transform.GetChild(1).gameObject;
+        option3Text.GetComponent<TextMeshProUGUI>().text = buttonList[randList[2]].name;
+        option3Button = buttonList[randList[2]];
+
         levelUpScreen.SetActive(true);
     }
 
@@ -134,5 +152,18 @@ public class GameManager : MonoBehaviour
         }
         upTickEnemySpawnCount++;
         StartCoroutine(SpawnTimer());
+    }
+    IEnumerator MainGameTimer()
+    {
+        yield return new WaitForSeconds(spawnRoundTime);
+        spawnManager.enemyLevelToSpawn++;
+        spawnTime = maxSpawnTime;
+        nextSpawnCount = baseSpawnCount;
+        yield return new WaitForSeconds(spawnRoundTime);
+        spawnManager.enemyLevelToSpawn++;
+        spawnTime = maxSpawnTime;
+        nextSpawnCount = baseSpawnCount;
+        yield return new WaitForSeconds(spawnRoundTime);
+
     }
 }

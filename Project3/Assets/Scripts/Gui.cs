@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class Gui : MonoBehaviour
 {
     public TMP_Text timerText;
     float currentTime = 0;
     float maxTime;
     public bool timerIsRunning = true;
+    public GameObject[] hearts;
+    public Slider expBar;
+    public TMP_Text expText;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,4 +33,26 @@ public class Gui : MonoBehaviour
         }
 
     }
+    public void SetHelathUI(int currentHealth)
+    {
+        currentHealth--;
+        if (currentHealth > 5)
+            Debug.LogWarning("Too much health!");
+        for (int i = 0; i < 6; i++)
+        {
+            if(currentHealth>=i)
+            hearts[i].SetActive(true);
+            else
+                hearts[i].SetActive(false);
+
+
+        }        
+    }
+
+    public void SetEXP(int exp, int maxEXP)
+    {
+        expBar.value = (float)exp / (float)maxEXP;
+        expText.text = exp.ToString() + " / " + maxEXP.ToString();
+    }
+    
 }

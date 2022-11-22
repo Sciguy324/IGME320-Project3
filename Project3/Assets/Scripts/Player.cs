@@ -10,8 +10,11 @@ public class Player : GenericEntity
     public float reloadSpeed;
     private float invincibilityTime = 1.0f;
 
+    private Animator anim;
+
     private bool tempInves = false;
-    
+    //GUI
+    public Gui playerGUI;
     //singlton code
     private static Player instance;
     public static Player Instance { get; private set; }
@@ -36,8 +39,10 @@ public class Player : GenericEntity
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
         arena = GameObject.Find("Platform").GetComponent<Platform>();
+        anim = gameObject.GetComponent<Animator>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        playerGUI.expText.text = "0 / " + nextLevelEXP.ToString();
     }
 
     void WrapAround()
@@ -70,6 +75,35 @@ public class Player : GenericEntity
     private void Move()
     {
         var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+        Debug.Log(input);
+        if (input.x > 0)
+        {
+            anim.SetBool("isRight", true);
+            anim.SetBool("isUp", false);
+            anim.SetBool("isDown", false);
+            anim.SetBool("isLeft", false);
+        }
+        if (input.x < 0)
+        {
+            anim.SetBool("isRight", false);
+            anim.SetBool("isUp", false);
+            anim.SetBool("isDown", false);
+            anim.SetBool("isLeft", true);
+        }
+        if (input.y > 0)
+        {
+            anim.SetBool("isRight", false);
+            anim.SetBool("isUp", true);
+            anim.SetBool("isDown", false);
+            anim.SetBool("isLeft", false);
+        }
+        if (input.y < 0)
+        {
+            anim.SetBool("isRight", false);
+            anim.SetBool("isUp", false);
+            anim.SetBool("isDown", true);
+            anim.SetBool("isLeft", false);
+        }
         _rigidBody.velocity = input.normalized * speed;
 
     }
@@ -112,7 +146,15 @@ public class Player : GenericEntity
             //Level Up
             GameManager.Instance.LevelUp();
             nextLevelEXP = nextLevelEXP * 2;
-
+            xp = 0;
         }
+        playerGUI.SetEXP(xp, nextLevelEXP);
     }
+    public override bool Damage(int amount)
+    {
+        if(health-1 >= 0)
+        playerGUI.SetHelathUI(health-1);
+        return base.Damage(amount);
+    }
+
 }

@@ -56,7 +56,10 @@ public abstract class GenericEntity : MonoBehaviour
     {
         health = maxHealth;
         position = transform.position;
-        sprite = gameObject.GetComponent<SpriteRenderer>();
+       
+       
+            sprite = gameObject.GetComponent<SpriteRenderer>();
+        
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         arena = GameObject.Find("Platform").GetComponent<Platform>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
@@ -286,7 +289,7 @@ public abstract class GenericEntity : MonoBehaviour
         }
     }
 
-    public bool Damage(int amount) {
+    virtual public bool Damage(int amount) {
         // Applies damage to the entity
         health -= amount;
 
