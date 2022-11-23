@@ -157,4 +157,15 @@ public class Player : GenericEntity
         return base.Damage(amount);
     }
 
+    public void addHeart()
+    {
+        // Adds an extra heart to the player's health
+        if (health == maxHealth)
+        {
+            maxHealth++;
+        }   
+        health++;
+        playerGUI.SetHelathUI(health);
+    }
+
 }

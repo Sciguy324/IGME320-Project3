@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
     public GameObject levelUpScreen;
 
     public List<GameObject> buttonList; // List of all the button prefabs for the level up screen
+    public List<BaseUpgrade> upgradeList; // List of all upgrade scriptable objects for the level up screen
 
     private static GameManager instance;
 
@@ -88,13 +89,17 @@ public class GameManager : MonoBehaviour
     }
     public void LevelUp()
     {
+        // Pause game
+        Time.timeScale = 0;
+
         // Randomly choose three different numbers (buttons from the List)
         List<int> randList = new List<int>(); // Will hold the three random numbers
         int counter = 0;
         do
         {
-            int randomNum = Random.Range(0, buttonList.Count - 1); // Random number between 0 and the last index of the buttonList
-            if(!randList.Contains(randomNum)) // If it isn't already chosen
+            int randomNum = Random.Range(0, upgradeList.Count); // Random number between 0 and the last index of the buttonList
+            // If it isn't already chosen AND the player hasn't maxed-out this stat
+            if(!randList.Contains(randomNum) && upgradeList[randomNum].getOk(Player.Instance))
             {
                 randList.Add(randomNum); // Add it to the list of random numbers
                 counter++; // Adjust counter accordingly
@@ -102,24 +107,21 @@ public class GameManager : MonoBehaviour
         } while (counter != 3);
 
         // Change the appropiate stuff for option1
-        GameObject option1Text = option1.transform.GetChild(0).gameObject;
-        GameObject option1Button = option1.transform.GetChild(1).gameObject;
-        option1Text.GetComponent<TextMeshProUGUI>().text = buttonList[randList[0]].name;
-        option1Button = buttonList[randList[0]];
+        option1.GetComponent<LevelupOptionPanel>().SetUpgrade(upgradeList[randList[0]]);
 
         // Change the appropiate stuff for option2
-        GameObject option2Text = option2.transform.GetChild(0).gameObject;
-        GameObject option2Button = option2.transform.GetChild(1).gameObject;
-        option2Text.GetComponent<TextMeshProUGUI>().text = buttonList[randList[1]].name;
-        option2Button = buttonList[randList[1]];
+        option2.GetComponent<LevelupOptionPanel>().SetUpgrade(upgradeList[randList[1]]);
 
-        // Change the appropiate stuff for option1
-        GameObject option3Text = option3.transform.GetChild(0).gameObject;
-        GameObject option3Button = option3.transform.GetChild(1).gameObject;
-        option3Text.GetComponent<TextMeshProUGUI>().text = buttonList[randList[2]].name;
-        option3Button = buttonList[randList[2]];
+        // Change the appropiate stuff for option3
+        option3.GetComponent<LevelupOptionPanel>().SetUpgrade(upgradeList[randList[2]]);
 
         levelUpScreen.SetActive(true);
+    }
+
+    public void HideLevelUpScreen()
+    {
+        levelUpScreen.SetActive(false);
+        Time.timeScale = 1;
     }
 
     IEnumerator SpawnTimer()

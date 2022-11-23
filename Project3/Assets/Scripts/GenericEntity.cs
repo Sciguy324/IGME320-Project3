@@ -17,6 +17,7 @@ public abstract class GenericEntity : MonoBehaviour
     private float radius; // Radius of entity
 
     public SpriteRenderer sprite;
+    public bool wearingHat = false;
 
     public float Radius => radius; // Accessor for the radius variable
 
@@ -77,17 +78,17 @@ public abstract class GenericEntity : MonoBehaviour
         SetTransform();
 
         // Debug wrap-around visualization
-        float w = arena.width();
-        float h = arena.height();
-        DebugBox(0.0f, 0.0f);
-        DebugBox(w, 0.0f);
-        DebugBox(-w, 0.0f);
-        DebugBox(0.0f, h);
-        DebugBox(0.0f, -h);
-        DebugBox(w, h);
-        DebugBox(w, -h);
-        DebugBox(-w, h);
-        DebugBox(-w, -h);
+        // float w = arena.width();
+        // float h = arena.height();
+        // DebugBox(0.0f, 0.0f);
+        // DebugBox(w, 0.0f);
+        // DebugBox(-w, 0.0f);
+        // DebugBox(0.0f, h);
+        // DebugBox(0.0f, -h);
+        // DebugBox(w, h);
+        // DebugBox(w, -h);
+        // DebugBox(-w, h);
+        // DebugBox(-w, -h);
     }
 
     void DebugBox(float dx, float dy) {
@@ -306,12 +307,6 @@ public abstract class GenericEntity : MonoBehaviour
         // Handle what to do upon death.  Override in subclass
     }
 
-    public void SetGun(Gun newGun) {
-        // Sets the entity's currently held gun
-        gun = newGun;
-        // FIXME: Where does the old gun go?
-    }
-
     public void FireGun() {
         // Shoot the gun, using the current direction/position of this entity
         if (gun != null) {
@@ -331,6 +326,11 @@ public abstract class GenericEntity : MonoBehaviour
         // Reactivates this enemy with new information
         gameObject.SetActive(true);
         
+    }
+
+    public int getHealth()
+    {
+        return health;
     }
 
     public abstract void CalculateSteeringForces();

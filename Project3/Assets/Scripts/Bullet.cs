@@ -20,14 +20,20 @@ public class Bullet : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody2D>();
     }
 
-   
+    public void Restore()
+    {
+        // Restores the stats of this bullet
+        piercesRemaining = maxPierces;
+        liveTime = 0.0f;
+    }
 
     void returnToOrigin() {
         // Sends the bullet back to whence it came
         sender.ReturnBullet(this.gameObject);
         // Disable the bullet game object
         gameObject.SetActive(false);
-        liveTime = 0.0f;
+        // Restore stats
+        Restore();
     }
 
     void OnCollisionEnter2D(Collision2D collision) {
