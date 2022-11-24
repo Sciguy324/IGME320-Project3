@@ -37,7 +37,7 @@ public class Gun : MonoBehaviour
     }
   
 
-    public void Shoot() {
+    public void Shoot(string sourceName = "Player") {
 
         if (currentBulletCount > 0)
         {
@@ -61,6 +61,7 @@ public class Gun : MonoBehaviour
             bullet.GetComponent<Bullet>().maxPierces = piercing;
             bullet.GetComponent<Bullet>().Restore();
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
+            bullet.GetComponent<Bullet>().sourceTag = sourceName;
             currentBulletCount--;
         }
         else if(!isReloading)

@@ -17,6 +17,8 @@ public class Player : GenericEntity
     public Gui playerGUI;
     //singlton code
     private static Player instance;
+
+    public Transform gunBaseForRotation;
     public static Player Instance { get; private set; }
     private void Awake()
     {
@@ -58,7 +60,7 @@ public class Player : GenericEntity
         Move();
         if (Input.GetMouseButtonDown(0))
         {
-            gun.Shoot();
+            gun.Shoot(gameObject.tag);
         }
 
         // Wrap-around position
@@ -70,7 +72,7 @@ public class Player : GenericEntity
     {
         Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePos = arena.trueNearestPosition(transform.position, mousePos);
-        transform.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
+        gunBaseForRotation.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
     }
     private void Move()
     {

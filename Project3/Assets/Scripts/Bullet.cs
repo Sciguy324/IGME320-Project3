@@ -12,7 +12,7 @@ public class Bullet : MonoBehaviour
     public Gun sender;
     public Platform arena;
     private float liveTime = 0.0f;
-
+    public string sourceTag;
     // Start is called before the first frame update
     void Start()
     {

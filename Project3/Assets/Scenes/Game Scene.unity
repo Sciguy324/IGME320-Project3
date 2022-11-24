@@ -161,7 +161,10 @@ MonoBehaviour:
   option3: {fileID: 0}
   spawnManager: {fileID: 0}
   spawnTime: 5
+  maxSpawnTime: 8
   nextSpawnCount: 3
+  baseSpawnCount: 3
+  spawnRoundTime: 10
 --- !u!4 &531908996
 Transform:
   m_ObjectHideFlags: 0
@@ -476,12 +479,20 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 30.037035
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 28.03789
+      objectReference: {fileID: 0}
+    - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_LocalPosition.z
@@ -515,6 +526,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4506757067362272661, guid: e390d061273bb194083d8792bff54eec, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: debf0e55dd8104f6b92b23b1984a53d7, type: 3}
     - target: {fileID: 4506757067362272662, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_Name
       value: Platform
