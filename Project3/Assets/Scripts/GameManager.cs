@@ -14,8 +14,6 @@ public class GameManager : MonoBehaviour
     private List<GameObject> expObjectMagazine;
     public GameObject expPrefeb;
     public GameObject levelUpScreen;
-
-    public List<GameObject> buttonList; // List of all the button prefabs for the level up screen
     public List<BaseUpgrade> upgradeList; // List of all upgrade scriptable objects for the level up screen
 
     private static GameManager instance;
