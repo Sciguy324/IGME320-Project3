@@ -14,9 +14,10 @@ GameObject:
   - component: {fileID: 5000000}
   - component: {fileID: 6000000}
   - component: {fileID: 11400006}
+  - component: {fileID: 6683297210503399832}
   m_Layer: 0
   m_Name: BossMonster
-  m_TagString: Untagged
+  m_TagString: Boss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3877724261964374697}
@@ -130,7 +131,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!60 &6000000
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +142,7 @@ PolygonCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -192,6 +193,34 @@ MonoBehaviour:
   m_shotRoutineFinishedCallbackEvents:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &6683297210503399832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3a763c35b2bcdc4e9f16c07bf1e22f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
+  maxHealth: 120
+  arena: {fileID: 0}
+  sprite: {fileID: 0}
+  wearingHat: 0
+  mass: 1
+  personalSpace: 1
+  maxSpeed: 2
+  maxForce: 2
+  gun: {fileID: 0}
+  _rigidBody: {fileID: 0}
+  visualCopies: []
+  attackDamage: 1
+  targetEntity: {fileID: 0}
+  expValue: 0
+  enemyVisuals: {fileID: 0}
 --- !u!1001 &3425126146187568071
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -248,9 +277,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 2d3c1e69ae987cb4190a12a45edeb312, type: 3}
+      propertyPath: m_bulletNum
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2d3c1e69ae987cb4190a12a45edeb312, type: 3}
+      propertyPath: m_bulletSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2d3c1e69ae987cb4190a12a45edeb312, type: 3}
       propertyPath: m_betweenDelay
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 2d3c1e69ae987cb4190a12a45edeb312, type: 3}
+      propertyPath: m_bulletPrefab
+      value: 
+      objectReference: {fileID: 100000, guid: e67a72e051da149a6a88cdb89c2af076, type: 3}
     - target: {fileID: 11400000, guid: 2d3c1e69ae987cb4190a12a45edeb312, type: 3}
       propertyPath: m_spiralWayNum
       value: 3
@@ -327,6 +368,14 @@ PrefabInstance:
     - target: {fileID: 400000, guid: db2e655b68d9a0749a249c163b5f6e62, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: db2e655b68d9a0749a249c163b5f6e62, type: 3}
+      propertyPath: m_bulletNum
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: db2e655b68d9a0749a249c163b5f6e62, type: 3}
+      propertyPath: m_bulletSpeed
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: db2e655b68d9a0749a249c163b5f6e62, type: 3}
       propertyPath: m_betweenDelay

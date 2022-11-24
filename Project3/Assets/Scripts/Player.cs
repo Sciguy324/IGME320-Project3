@@ -120,8 +120,24 @@ public class Player : GenericEntity
             Damage(collision.gameObject.GetComponent<Enemy>().attackDamage);
             StartCoroutine(tempshield());
         }
+
     }
-    IEnumerator tempshield()
+    //Used for enemy bullets
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "EnemyBullet" && !tempInves)
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("Ouch!");
+            Damage(1);
+            StartCoroutine(tempshield());
+        }
+
+    }
+
+
+IEnumerator tempshield()
     {
         tempInves = true;
         yield return new WaitForSeconds(invincibilityTime);

@@ -5,6 +5,8 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {   
     public List<Enemy> SpawnableEnemies;
+    public Enemy BossEnemy;
+
     public float minSpawnRadius;
     public float spawnSpread;
     public int enemySpawnCount;
@@ -38,8 +40,10 @@ public class SpawnManager : MonoBehaviour
     }
 
     //Option for spawning spesific amount
-    public void SpawnEnemiesCount(int enemiesToSpawn)
+    public void SpawnEnemiesCount(int enemiesToSpawn = 1)
     {
+
+        //Used to spawn normal enemies
         List<Enemy> currentSpawnList = enemiesLists[enemyLevelToSpawn];
 
         int toSpawn = enemiesToSpawn;
@@ -89,6 +93,16 @@ public class SpawnManager : MonoBehaviour
             currentEnemyCount++;
 
         }
+    }
+
+    public void SpawnBoss()
+    {
+        //Used to spawn the boss, will break after
+      
+            Enemy newEnemy = Instantiate(BossEnemy, RandPos(SurroundEntity.transform.position), Quaternion.identity);
+            newEnemy.targetEntity = SurroundEntity;
+        
+
     }
 
     // Pick a random location, used for picking where to spawn enemies

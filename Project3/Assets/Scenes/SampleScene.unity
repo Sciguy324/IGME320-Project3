@@ -441,6 +441,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 106422722}
     - target: {fileID: 3757669040453270146, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: reloadSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3757669040453270146, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: gunBaseForRotation
       value: 
       objectReference: {fileID: 1209019536}
@@ -1490,6 +1494,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
+      propertyPath: BossEnemy
+      value: 
+      objectReference: {fileID: 6683297210503399832, guid: 6583477e2819f6b40b1c65fff46ae32f, type: 3}
+    - target: {fileID: -8833223774151518419, guid: 7b53311738fdaa44c994e89776813285, type: 3}
       propertyPath: spawnSpread
       value: 3
       objectReference: {fileID: 0}
@@ -1658,6 +1666,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3a3901a21545b4386a9e94f50a3e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &1387693836 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8889001632118075000, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+  m_PrefabInstance: {fileID: 194637770}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1420825509
 GameObject:
   m_ObjectHideFlags: 0
@@ -1734,6 +1747,64 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1420825509}
   m_CullTransparentMesh: 1
+--- !u!1 &1472886296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1472886297}
+  - component: {fileID: 1472886298}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1472886297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472886296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1387693836}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1472886298
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472886296}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.024429321, y: -0.04603994}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.58282185, y: 0.66738534}
+  m_EdgeRadius: 0
 --- !u!1 &1480130251
 GameObject:
   m_ObjectHideFlags: 0
@@ -2779,7 +2850,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: spawnRoundTime
-      value: 45
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: buttonList.Array.size
