@@ -5,8 +5,8 @@ using UnityEngine;
 public class Gun : MonoBehaviour
 {
     private List<GameObject> objectMagazine;
-    public int maxMagazineSize =6;
-    private int currentBulletCount =6;
+    public int maxMagazineSize = 6;
+    private int currentBulletCount = 6;
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
@@ -28,6 +28,12 @@ public class Gun : MonoBehaviour
     public void ReturnBullet(GameObject bullet)
     {
         objectMagazine.Add(bullet);
+    }
+
+    public void expandMagazine(int amount)
+    {
+        // Expands the gun's magazine size
+        maxMagazineSize += amount;
     }
   
 
@@ -51,6 +57,9 @@ public class Gun : MonoBehaviour
                 bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 bullet.GetComponent<Bullet>().sender = this;
             }
+            // Configure bullet and send it on its way
+            bullet.GetComponent<Bullet>().maxPierces = piercing;
+            bullet.GetComponent<Bullet>().Restore();
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
             bullet.GetComponent<Bullet>().sourceTag = sourceName;
             currentBulletCount--;
