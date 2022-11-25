@@ -140,18 +140,17 @@ public class GameManager : MonoBehaviour
     }
     IEnumerator MainGameTimer()
     {
-        // yield return new WaitForSeconds(spawnRoundTime);
-        // spawnManager.enemyLevelToSpawn++;
-        // spawnTime = maxSpawnTime;
-        // nextSpawnCount = baseSpawnCount;
-        // yield return new WaitForSeconds(spawnRoundTime);
-        // spawnManager.enemyLevelToSpawn++;
-        // spawnTime = maxSpawnTime;
-        // nextSpawnCount = baseSpawnCount;
-        // yield return new WaitForSeconds(spawnRoundTime);
+        yield return new WaitForSeconds(spawnRoundTime);
+        spawnManager.enemyLevelToSpawn++;
+        spawnTime = maxSpawnTime;
+        nextSpawnCount = baseSpawnCount;
+        yield return new WaitForSeconds(spawnRoundTime);
+        spawnManager.enemyLevelToSpawn++;
+        spawnTime = maxSpawnTime;
+        nextSpawnCount = baseSpawnCount;
+        yield return new WaitForSeconds(spawnRoundTime);
         // Spawn in boss, and don't spawn anything else
         nextSpawnCount = 0;
-        yield return new WaitForSeconds(1.0f);
         spawnManager.SpawnBoss();
     }
 
