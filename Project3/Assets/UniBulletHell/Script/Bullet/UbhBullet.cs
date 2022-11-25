@@ -305,6 +305,9 @@ public class UbhBullet : UbhMonoBehaviour
             newPosition = m_transformCache.position + (m_transformCache.up * (m_speed * deltaTime));
         }
 
+        // Wrap-around position
+        newPosition = Platform.Instance.WrappedPosition(newPosition);
+
         // set new position and rotation
         m_transformCache.SetPositionAndRotation(newPosition, newRotation);
 
