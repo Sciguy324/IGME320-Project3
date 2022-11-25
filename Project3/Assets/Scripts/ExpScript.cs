@@ -22,6 +22,7 @@ public class ExpScript : MonoBehaviour
         //Check if collision is with player if it is, collect the xp
         if(collision.gameObject.tag == "Player")
         {
+            Debug.Log(collision.gameObject.GetComponent<Player>());
             collision.gameObject.GetComponent<Player>().GainEXP(value);
             GameManager.Instance.ReturnEXP(this.gameObject);
         }

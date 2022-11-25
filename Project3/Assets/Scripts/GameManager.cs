@@ -150,6 +150,7 @@ public class GameManager : MonoBehaviour
         nextSpawnCount = baseSpawnCount;
         yield return new WaitForSeconds(spawnRoundTime);
         // Spawn in boss, and don't spawn anything else
+        nextSpawnCount = 0;
         spawnManager.SpawnBoss();
     }
 

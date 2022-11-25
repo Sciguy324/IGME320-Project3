@@ -19,6 +19,7 @@ public class VisualCopy : MonoBehaviour
         ParentSpriteRenderer = parent.GetComponent<SpriteRenderer>();
 
         GetComponent<SpriteRenderer>().sprite = ParentSpriteRenderer.sprite;
+        GetComponent<SpriteRenderer>().color = ParentSpriteRenderer.color;
     }
 
     private Vector3 ComputeOffset()
