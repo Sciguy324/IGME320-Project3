@@ -17,8 +17,8 @@ MonoBehaviour:
   img: {fileID: 21300000, guid: da6d9e6e0a1347943b55512bfcd3b3f3, type: 3}
   healthBoost: 0
   speedBoost: 0
+  DamageBoost: 1
   shootingBoost: 0
   magBoost: 0
   piercingBoost: 0
-  bulletDamageBoost: 1
   unlockHat: 0

@@ -14,10 +14,10 @@ public class BaseUpgrade : ScriptableObject
     // What effect does this upgrade have?
     public bool healthBoost = false;
     public int speedBoost = 0;
+    public int DamageBoost = 0;
     public int shootingBoost = 0;
     public int magBoost = 0;
     public int piercingBoost = 0;
-    public int bulletDamageBoost = 0;
     public bool unlockHat = false;
 
     public void apply(Player player)
@@ -33,6 +33,8 @@ public class BaseUpgrade : ScriptableObject
             player.gun.expandMagazine(magBoost);
         if (piercingBoost > 0)
             player.gun.piercing++;
+        if (DamageBoost > 0)
+            player.gun.damage++;
         if (unlockHat)
             player.wearingHat = true;
     }

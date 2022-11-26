@@ -2858,7 +2858,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: upgradeList.Array.size
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: buttonList.Array.data[0]
@@ -2891,11 +2891,15 @@ PrefabInstance:
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: upgradeList.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 6c4abb85e1b1d6a4b958490d17d65b38, type: 2}
+      objectReference: {fileID: 11400000, guid: c639fd0200d616c4a895d0773f7cc850, type: 2}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: upgradeList.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: d1967c6ed6b3a9f4489276073f153e09, type: 2}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: upgradeList.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: e24697b1e6b2d034fa6c97ec66fbec6e, type: 2}
     - target: {fileID: 4532233818817016972, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: m_Name
       value: GameManager

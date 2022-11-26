@@ -13,6 +13,7 @@ public class Gun : MonoBehaviour
     public int piercing = 1;
     private bool isReloading;
     public GameObject isRealodingSprite;
+    public int damage = 1;
     // Start is called before the first frame update
     void Start()
     {
@@ -57,12 +58,14 @@ public class Gun : MonoBehaviour
                 bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 bullet.GetComponent<Bullet>().sender = this;
             }
+            Bullet bulletScript = bullet.GetComponent<Bullet>();
             // Configure bullet and send it on its way
-            bullet.GetComponent<Bullet>().maxPierces = piercing;
-            bullet.GetComponent<Bullet>().Restore();
+            bulletScript.maxPierces = piercing;
+            bulletScript.Restore();
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
-            bullet.GetComponent<Bullet>().sourceTag = sourceName;
-            currentBulletCount--;
+            bulletScript.sourceTag = sourceName;
+            bulletScript.damage = damage;
+             currentBulletCount--;
         }
         else if(!isReloading)
         {
