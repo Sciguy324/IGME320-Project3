@@ -8,6 +8,7 @@ public class Platform : MonoBehaviour
     public float maxX;
     public float minY;
     public float maxY;
+    public static Platform Instance { get; private set; }
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +19,7 @@ public class Platform : MonoBehaviour
         maxX = scale.x/2;
         minY = -scale.y/2;
         maxY = scale.y/2;
+        Instance = this;
     }
 
     public float width()

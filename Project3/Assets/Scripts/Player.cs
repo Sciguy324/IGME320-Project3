@@ -77,7 +77,7 @@ public class Player : GenericEntity
     private void Move()
     {
         var input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        Debug.Log(input);
+        //Debug.Log(input);
         if (input.x > 0)
         {
             anim.SetBool("isRight", true);
