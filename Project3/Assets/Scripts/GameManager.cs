@@ -53,6 +53,9 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // STOP TIME UNTIL YOU CLICK START GAME
+        Time.timeScale = 0;
+        Player.Instance.gameObject.SetActive(false);
         StartCoroutine(SpawnTimer());
         StartCoroutine(MainGameTimer());
 
