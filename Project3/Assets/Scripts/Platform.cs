@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    public float minX;
-    public float maxX;
-    public float minY;
-    public float maxY;
+    public float minX { get; private set; }
+    public float maxX { get; private set; }
+    public float minY { get; private set; }
+    public float maxY { get; private set; }
     public static Platform Instance { get; private set; }
 
     // Start is called before the first frame update
@@ -104,6 +104,9 @@ public class Platform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.DrawLine(new Vector2(minX, minY), new Vector2(minX, maxY));
+        Debug.DrawLine(new Vector2(minX, maxY), new Vector2(maxX, maxY));
+        Debug.DrawLine(new Vector2(maxX, maxY), new Vector2(maxX, minY));
+        Debug.DrawLine(new Vector2(maxX, minY), new Vector2(minX, minY));
     }
 }

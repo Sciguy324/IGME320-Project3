@@ -64,6 +64,18 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4769698386334110249, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769698386334110249, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769698386334110249, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4769698386334110249, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -139,8 +151,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   maxHealth: 1
-  arena: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
   sprite: {fileID: 0}
+  wearingHat: 0
   mass: 1
   personalSpace: 1
   maxSpeed: 2

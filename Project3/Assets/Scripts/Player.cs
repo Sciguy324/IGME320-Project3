@@ -40,7 +40,6 @@ public class Player : GenericEntity
         health = maxHealth;
         position = transform.position;
         sprite = gameObject.GetComponent<SpriteRenderer>();
-        arena = GameObject.Find("Platform").GetComponent<Platform>();
         anim = gameObject.GetComponent<Animator>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -49,7 +48,7 @@ public class Player : GenericEntity
 
     void WrapAround()
     {
-        transform.position = arena.WrappedPosition(transform.position);
+        transform.position = Platform.Instance.WrappedPosition(transform.position);
     }
 
     // Update is called once per frame
@@ -71,7 +70,7 @@ public class Player : GenericEntity
     private void LookAtMouse()
     {
         Vector2 mousePos = (Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos = arena.trueNearestPosition(transform.position, mousePos);
+        mousePos = Platform.Instance.trueNearestPosition(transform.position, mousePos);
         gunBaseForRotation.up = (Vector3)(mousePos - new Vector2(transform.position.x, transform.position.y));
     }
     private void Move()

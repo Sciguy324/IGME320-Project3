@@ -6,7 +6,6 @@ public class CameraFollow : MonoBehaviour
 {
     public GenericEntity FollowedEntity;
     public float TimeConstant = 0.01f;
-    public Platform arena;
     private Transform _transform;
 
     // Start is called before the first frame update
@@ -19,7 +18,7 @@ public class CameraFollow : MonoBehaviour
     void FixedUpdate()
     {
         // Find nearest replica position
-        Vector3 targetPos = arena.trueNearestPosition(_transform.position, FollowedEntity.transform.position);
+        Vector3 targetPos = Platform.Instance.trueNearestPosition(_transform.position, FollowedEntity.transform.position);
 
         // Smooth pan over to target position assuming an exponentially decaying approach
         Vector3 diff = targetPos - _transform.position;
@@ -29,6 +28,6 @@ public class CameraFollow : MonoBehaviour
         _transform.position = new Vector3(_transform.position.x, _transform.position.y, -1.0f);
 
         // Wrap position
-        _transform.position = arena.WrappedPosition(_transform.position);
+        _transform.position = Platform.Instance.WrappedPosition(_transform.position);
     }
 }

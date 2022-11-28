@@ -55,6 +55,7 @@ MonoBehaviour:
   bulletSpeed: 20
   piercing: 1
   isRealodingSprite: {fileID: 0}
+  damage: 1
 --- !u!212 &1719008620040445904
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -259,8 +260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   maxHealth: 1
-  arena: {fileID: 5957656056765943156, guid: e390d061273bb194083d8792bff54eec, type: 3}
   sprite: {fileID: 0}
+  wearingHat: 0
   mass: 1
   personalSpace: 1
   maxSpeed: 2
@@ -271,6 +272,8 @@ MonoBehaviour:
   xp: 0
   nextLevelEXP: 3
   reloadSpeed: 0
+  playerGUI: {fileID: 0}
+  gunBaseForRotation: {fileID: 0}
 --- !u!1 &7229174028820321126
 GameObject:
   m_ObjectHideFlags: 0

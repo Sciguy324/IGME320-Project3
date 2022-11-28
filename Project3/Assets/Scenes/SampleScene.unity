@@ -602,11 +602,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_LocalScale.x
-      value: 33.751736
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_LocalScale.y
-      value: 31.396965
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 4506757067362272660, guid: e390d061273bb194083d8792bff54eec, type: 3}
       propertyPath: m_LocalPosition.x
@@ -860,7 +860,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FollowedEntity: {fileID: 1350515126}
   TimeConstant: 0.2
-  arena: {fileID: 497981926}
 --- !u!1 &744304017
 GameObject:
   m_ObjectHideFlags: 0
