@@ -18,6 +18,7 @@ public class BaseUpgrade : ScriptableObject
     public int shootingBoost = 0;
     public int magBoost = 0;
     public int piercingBoost = 0;
+    public float reloadMultiplier = 1.0f;
     public bool unlockHat = false;
 
     public void apply(Player player)
@@ -35,6 +36,8 @@ public class BaseUpgrade : ScriptableObject
             player.gun.piercing++;
         if (DamageBoost > 0)
             player.gun.damage++;
+        if (reloadMultiplier != 0.0f)
+            player.reloadSpeed *= reloadMultiplier;
         if (unlockHat)
             player.wearingHat = true;
     }

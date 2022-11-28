@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2475a5c1d8ad441981b74d97c03d09, type: 3}
   m_Name: BulletDamageUpgrade
   m_EditorClassIdentifier: 
-  UpgradeName: Hello World
-  UpgradeDescription: You are now breathing manually
+  UpgradeName: Damage Up
+  UpgradeDescription: Your bullet damage is increased
   img: {fileID: 21300000, guid: da6d9e6e0a1347943b55512bfcd3b3f3, type: 3}
   healthBoost: 0
   speedBoost: 0
@@ -21,4 +21,5 @@ MonoBehaviour:
   shootingBoost: 0
   magBoost: 0
   piercingBoost: 0
+  reloadMultiplier: 1
   unlockHat: 0

@@ -65,7 +65,7 @@ public class Gun : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().AddForce(firePoint.up * bulletSpeed, ForceMode2D.Impulse);
             bulletScript.sourceTag = sourceName;
             bulletScript.damage = damage;
-             currentBulletCount--;
+            currentBulletCount--;
         }
         else if(!isReloading)
         {
@@ -78,7 +78,7 @@ public class Gun : MonoBehaviour
     {
         isRealodingSprite.SetActive(true);
         isReloading = true;
-         yield return new WaitForSeconds(Player.Instance.reloadSpeed);
+        yield return new WaitForSeconds(Player.Instance.reloadSpeed);
         currentBulletCount = maxMagazineSize;
         isReloading = false;
         isRealodingSprite.SetActive(false);

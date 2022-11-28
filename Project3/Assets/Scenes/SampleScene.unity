@@ -2915,7 +2915,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: upgradeList.Array.size
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: buttonList.Array.data[0]
@@ -2957,6 +2957,10 @@ PrefabInstance:
       propertyPath: upgradeList.Array.data[5]
       value: 
       objectReference: {fileID: 11400000, guid: e24697b1e6b2d034fa6c97ec66fbec6e, type: 2}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: upgradeList.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: bd76c24ac6929734680a4380602eb466, type: 2}
     - target: {fileID: 4532233818817016972, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: m_Name
       value: GameManager
