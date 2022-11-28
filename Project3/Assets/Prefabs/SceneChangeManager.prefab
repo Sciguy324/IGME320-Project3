@@ -44,3 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cb1bdb7780104b4ca8f481ffe256d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetCursorTexture: {fileID: 2800000, guid: e4b0ca19495adc8449542598205e2e51, type: 3}

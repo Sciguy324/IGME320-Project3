@@ -297,6 +297,9 @@ public abstract class GenericEntity : MonoBehaviour
         // Handle the case of zero-health
         if (health <= 0) {
             Die();
+        } else {
+            // Otherwise, blink red to indicate damage
+            StartCoroutine(Blink());
         }
 
         // Damage occurred
@@ -335,4 +338,10 @@ public abstract class GenericEntity : MonoBehaviour
 
     public abstract void CalculateSteeringForces();
 
+    public IEnumerator Blink()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.125f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
 }
