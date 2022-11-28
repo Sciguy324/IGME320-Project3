@@ -10,7 +10,6 @@ public class Bullet : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private int piercesRemaining = 0;
     public Gun sender;
-    public Platform arena;
     private float liveTime = 0.0f;
     public string sourceTag;
     // Start is called before the first frame update
@@ -52,7 +51,7 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         // Wrap position around
-        transform.position = arena.WrappedPosition(transform.position);
+        transform.position = Platform.Instance.WrappedPosition(transform.position);
 
         // Increment timer
         liveTime += Time.fixedDeltaTime;

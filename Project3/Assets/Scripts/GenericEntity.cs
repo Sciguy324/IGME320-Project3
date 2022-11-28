@@ -12,7 +12,6 @@ public abstract class GenericEntity : MonoBehaviour
     protected Vector3 velocity; // The velocity of the entity
     protected Vector3 acceleration; // The acceleration of the entity
     protected GameManager manager; // The manager for the entire game, a reference to it
-    public Platform arena;
 
     private float radius; // Radius of entity
 
@@ -62,7 +61,6 @@ public abstract class GenericEntity : MonoBehaviour
             sprite = gameObject.GetComponent<SpriteRenderer>();
         
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
-        arena = GameObject.Find("Platform").GetComponent<Platform>();
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         radius = sprite.bounds.extents.x;
     }
@@ -154,7 +152,7 @@ public abstract class GenericEntity : MonoBehaviour
     // Wraps the entity's position around
     void WrapAround()
     {
-        position = arena.WrappedPosition(position);
+        position = Platform.Instance.WrappedPosition(position);
     }
 
     /// <summary>
@@ -218,7 +216,7 @@ public abstract class GenericEntity : MonoBehaviour
     public Vector3 Seek(Vector3 targetPosition)
     {   
         // Compute replica position
-        targetPosition = arena.trueNearestPosition(position, targetPosition);
+        targetPosition = Platform.Instance.trueNearestPosition(position, targetPosition);
 
         // calculating our desired velocity
         // a vector towards our targetPosition
@@ -297,6 +295,9 @@ public abstract class GenericEntity : MonoBehaviour
         // Handle the case of zero-health
         if (health <= 0) {
             Die();
+        } else {
+            // Otherwise, blink red to indicate damage
+            StartCoroutine(Blink());
         }
 
         // Damage occurred
@@ -335,4 +336,10 @@ public abstract class GenericEntity : MonoBehaviour
 
     public abstract void CalculateSteeringForces();
 
+    public IEnumerator Blink()
+    {
+        GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.125f);
+        GetComponent<SpriteRenderer>().color = Color.white;
+    }
 }

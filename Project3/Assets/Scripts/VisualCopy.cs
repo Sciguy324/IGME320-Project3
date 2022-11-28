@@ -7,6 +7,7 @@ public class VisualCopy : MonoBehaviour
     private SpriteRenderer ParentSpriteRenderer;
     private Transform ParentTransform;
     private Platform arena;
+    private SpriteRenderer _renderer;
     public bool visX;
     public bool visY;
     
@@ -18,8 +19,9 @@ public class VisualCopy : MonoBehaviour
         ParentTransform = parent.GetComponent<Transform>();
         ParentSpriteRenderer = parent.GetComponent<SpriteRenderer>();
 
-        GetComponent<SpriteRenderer>().sprite = ParentSpriteRenderer.sprite;
-        GetComponent<SpriteRenderer>().color = ParentSpriteRenderer.color;
+        _renderer = GetComponent<SpriteRenderer>();
+        _renderer.sprite = ParentSpriteRenderer.sprite;
+        _renderer.color = ParentSpriteRenderer.color;
     }
 
     private Vector3 ComputeOffset()
@@ -52,6 +54,10 @@ public class VisualCopy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Update rendered color
+        _renderer.color = ParentSpriteRenderer.color;
+
+        // Update rendered location
         transform.position = ParentTransform.position + ComputeOffset();
         transform.rotation = ParentTransform.rotation;
     }

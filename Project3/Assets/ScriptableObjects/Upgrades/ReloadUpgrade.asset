@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af2475a5c1d8ad441981b74d97c03d09, type: 3}
-  m_Name: HealthUpgrade
+  m_Name: ReloadUpgrade
   m_EditorClassIdentifier: 
-  UpgradeName: Health Upgrade
-  UpgradeDescription: Increases your number of hearts up to six!
-  img: {fileID: 21300000, guid: ddde82b99b61c9c468597c00377fb63b, type: 3}
-  healthBoost: 1
+  UpgradeName: Reload Upgrade
+  UpgradeDescription: Your reload speed is doubled
+  img: {fileID: 21300000, guid: c3a16dc65d6c0e046a7806df1266513b, type: 3}
+  healthBoost: 0
   speedBoost: 0
   DamageBoost: 0
   shootingBoost: 0
   magBoost: 0
   piercingBoost: 0
-  reloadMultiplier: 1
+  reloadMultiplier: 0.5
   unlockHat: 0
