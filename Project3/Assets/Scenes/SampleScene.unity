@@ -6440,6 +6440,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1786663351}
     - target: {fileID: 7827788854458010080, guid: 7a114acef64a73c45892cc89680a257e, type: 3}
+      propertyPath: levelUpScreen
+      value: 
+      objectReference: {fileID: 1146756336}
+    - target: {fileID: 7827788854458010080, guid: 7a114acef64a73c45892cc89680a257e, type: 3}
       propertyPath: onboardScreen
       value: 
       objectReference: {fileID: 1414914567}

@@ -119,6 +119,7 @@ public class GameManager : MonoBehaviour
     public void HideLevelUpScreen()
     {
         levelUpScreen.SetActive(false);
+        Player.Instance.gameObject.SetActive(true);
         Time.timeScale = 1;
     }
 

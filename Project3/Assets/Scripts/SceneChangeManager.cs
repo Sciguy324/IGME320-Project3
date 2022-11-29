@@ -11,7 +11,10 @@ public class SceneChangeManager : MonoBehaviour
     public GameObject onboardScreen;
     public GameObject creditsScreen;
     public GameObject pauseScreen;
+    public GameObject levelUpScreen;
     public Texture2D targetCursorTexture;
+
+    
     public static SceneChangeManager Instance { get; private set; }
 
     public void GoToCredits()
@@ -34,6 +37,7 @@ public class SceneChangeManager : MonoBehaviour
             Cursor.SetCursor(targetCursorTexture, Vector2.zero, CursorMode.Auto);
         }
         */
+        
 
         Instance = this;
     }
@@ -54,8 +58,12 @@ public class SceneChangeManager : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
             pauseScreen.SetActive(false);
-            Time.timeScale = 1;
-            Player.Instance.gameObject.SetActive(true);
+            // Unpause the game only if the levelup screen isn't active
+            if (!levelUpScreen.active)
+            {
+                Time.timeScale = 1;
+                Player.Instance.gameObject.SetActive(true);
+            }
         }
         else
         {
@@ -78,14 +86,17 @@ public class SceneChangeManager : MonoBehaviour
     
     public void OnPause(InputValue value)
     {
-        pauseScreen.SetActive(true);
-        creditsScreen.SetActive(false);
-        onboardScreen.SetActive(false);
-        startScreen.SetActive(false);
-        Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
-        Time.timeScale = 0;
-        Player.Instance.gameObject.SetActive(false);
-        Debug.Log("Game is pausing");
+        if (SceneManager.GetActiveScene().name == "SampleScene") 
+        {
+            pauseScreen.SetActive(true);
+            creditsScreen.SetActive(false);
+            onboardScreen.SetActive(false);
+            startScreen.SetActive(false);
+            Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
+            Time.timeScale = 0;
+            Player.Instance.gameObject.SetActive(false);
+            Debug.Log("Game is pausing");
+        }
     }
     
 
