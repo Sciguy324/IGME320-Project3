@@ -460,7 +460,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be3a3901a21545b4386a9e94f50a3e47, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 7
   maxHealth: 3
   sprite: {fileID: 0}
   wearingHat: 0

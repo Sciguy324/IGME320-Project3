@@ -209,8 +209,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  maxHealth: 10
-  arena: {fileID: 0}
+  maxHealth: 75
   sprite: {fileID: 0}
   wearingHat: 0
   mass: 1
@@ -285,7 +284,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 2d3c1e69ae987cb4190a12a45edeb312, type: 3}
       propertyPath: m_bulletNum
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 2d3c1e69ae987cb4190a12a45edeb312, type: 3}
       propertyPath: m_bulletSpeed
@@ -378,7 +377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: db2e655b68d9a0749a249c163b5f6e62, type: 3}
       propertyPath: m_bulletNum
-      value: 50
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: db2e655b68d9a0749a249c163b5f6e62, type: 3}
       propertyPath: m_bulletSpeed

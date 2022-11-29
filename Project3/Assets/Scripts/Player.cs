@@ -162,7 +162,7 @@ IEnumerator tempshield()
         {
             //Level Up
             GameManager.Instance.LevelUp();
-            nextLevelEXP = nextLevelEXP * 2;
+            nextLevelEXP = Mathf.RoundToInt(nextLevelEXP * 1.5f);
             xp = 0;
         }
         playerGUI.SetEXP(xp, nextLevelEXP);
