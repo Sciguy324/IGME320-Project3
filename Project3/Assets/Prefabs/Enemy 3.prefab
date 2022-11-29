@@ -41,7 +41,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290737888066132580, guid: f9b89c2869d1b5340a9b9a2c847bb21b, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4290737888066132580, guid: f9b89c2869d1b5340a9b9a2c847bb21b, type: 3}
       propertyPath: enemyVisuals

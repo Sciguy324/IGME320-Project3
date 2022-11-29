@@ -145,12 +145,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(spawnRoundTime);
         spawnManager.enemyLevelToSpawn++;
-        spawnTime = maxSpawnTime;
-        nextSpawnCount = baseSpawnCount;
+        spawnTime = maxSpawnTime-1;
+        nextSpawnCount = baseSpawnCount+4;
         yield return new WaitForSeconds(spawnRoundTime);
         spawnManager.enemyLevelToSpawn++;
-        spawnTime = maxSpawnTime;
-        nextSpawnCount = baseSpawnCount;
+        spawnTime = maxSpawnTime-1.5f;
+        nextSpawnCount = baseSpawnCount+8;
         yield return new WaitForSeconds(spawnRoundTime);
         // Spawn in boss, and don't spawn anything else
         nextSpawnCount = 0;
