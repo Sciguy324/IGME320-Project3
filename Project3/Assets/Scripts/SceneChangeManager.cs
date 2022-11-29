@@ -12,6 +12,7 @@ public class SceneChangeManager : MonoBehaviour
     public GameObject creditsScreen;
     public GameObject pauseScreen;
     public Texture2D targetCursorTexture;
+    public static SceneChangeManager Instance { get; private set; }
 
     public void GoToCredits()
     {
@@ -33,6 +34,8 @@ public class SceneChangeManager : MonoBehaviour
             Cursor.SetCursor(targetCursorTexture, Vector2.zero, CursorMode.Auto);
         }
         */
+
+        Instance = this;
     }
 
     public void GoToHowToPlay()
