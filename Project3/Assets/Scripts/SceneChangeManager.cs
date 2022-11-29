@@ -50,14 +50,17 @@ public class SceneChangeManager : MonoBehaviour
 
     public void GoToGame()
     {
-        creditsScreen.SetActive(false);
-        onboardScreen.SetActive(false);
-        startScreen.SetActive(false);
-        pauseScreen.SetActive(false);
-        // Make player active so bullets work and stuff
-        Player.Instance.gameObject.SetActive(true);
-        // Resume the game
-        Time.timeScale = 1;
+        // If we are already in the scene just get rid of the pause screen
+        if (SceneManager.GetActiveScene().name == "SampleScene")
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1;
+            Player.Instance.gameObject.SetActive(true);
+        }
+        else
+        {
+            SceneManager.LoadScene("SampleScene");
+        }
         Debug.Log("Game is starting/resuming");
         Cursor.SetCursor(targetCursorTexture, Vector2.zero, CursorMode.Auto);
     }
