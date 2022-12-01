@@ -55,7 +55,6 @@ public class GameManager : MonoBehaviour
     {
         StartCoroutine(SpawnTimer());
         StartCoroutine(MainGameTimer());
-
     }
 
     // Update is called once per frame

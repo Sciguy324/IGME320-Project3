@@ -31,14 +31,10 @@ public class SceneChangeManager : MonoBehaviour
     void Start()
     {
         // For when we're not starting on the "start" menu
-        /*
         if (SceneManager.GetActiveScene().name == "SampleScene")
         {
             Cursor.SetCursor(targetCursorTexture, Vector2.zero, CursorMode.Auto);
         }
-        */
-        
-
         Instance = this;
     }
 
@@ -59,7 +55,7 @@ public class SceneChangeManager : MonoBehaviour
         {
             pauseScreen.SetActive(false);
             // Unpause the game only if the levelup screen isn't active
-            if (!levelUpScreen.active)
+            if (!levelUpScreen.activeSelf)
             {
                 Time.timeScale = 1;
                 Player.Instance.gameObject.SetActive(true);
