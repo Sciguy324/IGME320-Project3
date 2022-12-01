@@ -12,6 +12,12 @@ public class Gui : MonoBehaviour
     public GameObject[] hearts;
     public Slider expBar;
     public TMP_Text expText;
+    public TMP_Text ammoText;
+    public bool isRealoding;
+    public Slider reloadinBar;
+    private float reloadTime;
+    private float currentReloadProgress;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,6 +37,18 @@ public class Gui : MonoBehaviour
             int milliseconds = Mathf.FloorToInt((currentTime * 100F) % 100F);
             timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
         }
+        if (isRealoding)
+        {
+            currentReloadProgress+=Time.deltaTime;
+            reloadinBar.value = currentReloadProgress / reloadTime;
+            if (currentReloadProgress > reloadTime)
+            {
+                isRealoding = false;
+                ammoText.gameObject.SetActive(true);
+                reloadinBar.gameObject.SetActive(false);
+            }
+        }
+     
 
     }
     public void SetHelathUI(int currentHealth)
@@ -54,5 +72,18 @@ public class Gui : MonoBehaviour
         expBar.value = (float)exp / (float)maxEXP;
         expText.text = exp.ToString() + " / " + maxEXP.ToString();
     }
-    
+    public void SetAmmo(int maxAmmo, int curretAmmo)
+    {
+       ammoText.text = curretAmmo + " / " + maxAmmo ;
+    }
+    public void startReloading(float reload)
+    {
+        currentReloadProgress = 0;
+        reloadTime = reload;
+        isRealoding = true;
+        ammoText.gameObject.SetActive(false);
+        reloadinBar.gameObject.SetActive(true);
+
+    }
+
 }
