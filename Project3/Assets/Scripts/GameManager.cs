@@ -138,6 +138,7 @@ public class GameManager : MonoBehaviour
         upTickEnemySpawnCount++;
         StartCoroutine(SpawnTimer());
     }
+
     IEnumerator MainGameTimer()
     {
         yield return new WaitForSeconds(spawnRoundTime);

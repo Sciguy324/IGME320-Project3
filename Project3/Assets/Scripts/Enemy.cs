@@ -39,7 +39,6 @@ public class Enemy : GenericEntity
 
         ApplyForce(ultimateForce);
     }
-
     public override void Die() {
         // Deactivate this entity
         gameObject.SetActive(false);
@@ -48,6 +47,29 @@ public class Enemy : GenericEntity
         {
             bossKilled.Invoke();
         }
+    }
+
+    protected override void Update()
+    {   
+        // Run base update functions
+        base.Update();
+
+        // Just fire the gun
+        if (gun != null) {
+            AimGun();
+            FireGun();
+        }
+    }
+
+    protected void AimGun()
+    {
+        // Aims gun at player
+        // Compute direction vector
+        Vector3 targetPosition = Platform.Instance.trueNearestPosition(position, Player.Instance.transform.position);
+        Vector3 direction = targetPosition - position;
+
+        // Aim gun with normalized direction vector
+        gunBaseForRotation.transform.up = direction.normalized;
     }
 
 }

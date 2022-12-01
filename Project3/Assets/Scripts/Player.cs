@@ -18,8 +18,6 @@ public class Player : GenericEntity
     public Gui playerGUI;
     //singlton code
     private static Player instance;
-
-    public Transform gunBaseForRotation;
     public static Player Instance { get; private set; }
     private void Awake()
     {
@@ -53,14 +51,14 @@ public class Player : GenericEntity
     }
 
     // Update is called once per frame
-    void Update()
+    protected override void Update()
     {
         //Look at mouse
         LookAtMouse();
         Move();
         if (Input.GetMouseButtonDown(0))
         {
-            gun.Shoot(gameObject.tag);
+            FireGun();
         }
 
         // Wrap-around position

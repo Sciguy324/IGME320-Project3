@@ -48,6 +48,7 @@ public abstract class GenericEntity : MonoBehaviour
     }
 
     public Gun gun;
+    public Transform gunBaseForRotation;
     public Rigidbody2D _rigidBody;
     public List<VisualCopy> visualCopies;
 
@@ -66,7 +67,7 @@ public abstract class GenericEntity : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         CalculateSteeringForces();
 
@@ -283,8 +284,15 @@ public abstract class GenericEntity : MonoBehaviour
         // Check if collided thing is a bullet
         if (collision.gameObject.GetComponent<Bullet>()) {
             Bullet bullet = collision.gameObject.GetComponent<Bullet>();
-            // Apply damage
-            Damage(bullet.damage);
+            // Can't shoot self
+            if (gameObject.tag != bullet.sourceTag)
+            {
+                // Enemies can't shoot boss and boss can't shoot enemies
+                if (!((gameObject.tag == "Boss" && bullet.sourceTag == "Enemy") ||
+                      (gameObject.tag == "Enemy" && bullet.sourceTag == "Boss"))) {
+                    Damage(bullet.damage);
+                }
+            }
         }
     }
 
@@ -309,9 +317,9 @@ public abstract class GenericEntity : MonoBehaviour
     }
 
     public void FireGun() {
-        // Shoot the gun, using the current direction/position of this entity
+        // Shoot the gun
         if (gun != null) {
-            gun.Shoot();
+            gun.Shoot(gameObject.tag);
         }
     }
 

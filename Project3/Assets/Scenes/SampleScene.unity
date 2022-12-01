@@ -5668,7 +5668,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1973917857
 GameObject:
@@ -6381,7 +6381,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3393844210998094635, guid: 7a114acef64a73c45892cc89680a257e, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 3393844210998094635, guid: 7a114acef64a73c45892cc89680a257e, type: 3}
       propertyPath: m_LocalPosition.x

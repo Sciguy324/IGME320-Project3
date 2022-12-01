@@ -123,6 +123,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 6010674132499989696, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5095994122762799971, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
     - {fileID: 957191527501792979, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
@@ -130,6 +134,11 @@ PrefabInstance:
 --- !u!50 &1997354969597248600 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: -6713376892415264759, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
+  m_PrefabInstance: {fileID: 4138047788773620817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &6571447358194105593 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7088441530358661288, guid: e2c1e15616c42984b8d8d8be9c42b09e, type: 3}
   m_PrefabInstance: {fileID: 4138047788773620817}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &7640208115546962065 stripped
@@ -178,6 +187,7 @@ MonoBehaviour:
   maxSpeed: 2
   maxForce: 2
   gun: {fileID: 0}
+  gunBaseForRotation: {fileID: 6571447358194105593}
   _rigidBody: {fileID: 1997354969597248600}
   visualCopies: []
   attackDamage: 1
