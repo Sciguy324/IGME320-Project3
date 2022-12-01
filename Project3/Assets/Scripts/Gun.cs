@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
     private bool isReloading;
     public GameObject isRealodingSprite;
     public int damage = 1;
+    public Gui gui;
     // Start is called before the first frame update
     void Start()
     {
@@ -35,6 +36,7 @@ public class Gun : MonoBehaviour
     {
         // Expands the gun's magazine size
         maxMagazineSize += amount;
+        gui.SetAmmo(maxMagazineSize, currentBulletCount);
     }
   
 
@@ -66,6 +68,8 @@ public class Gun : MonoBehaviour
             bulletScript.sourceTag = sourceName;
             bulletScript.damage = damage;
             currentBulletCount--;
+            gui.SetAmmo(maxMagazineSize, currentBulletCount);
+
         }
         else if(!isReloading)
         {
@@ -76,12 +80,14 @@ public class Gun : MonoBehaviour
 
     IEnumerator Reload()
     {
+        gui.startReloading(Player.Instance.reloadSpeed);
         isRealodingSprite.SetActive(true);
         isReloading = true;
         yield return new WaitForSeconds(Player.Instance.reloadSpeed);
         currentBulletCount = maxMagazineSize;
         isReloading = false;
         isRealodingSprite.SetActive(false);
+        gui.SetAmmo(maxMagazineSize, currentBulletCount);
 
     }
 }
