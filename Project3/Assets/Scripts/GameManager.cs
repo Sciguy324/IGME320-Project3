@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
     public int nextSpawnCount = 3;
     public int baseSpawnCount = 3;
 
-    public int spawnRoundTime = 10;
+    public int spawnRoundTime = 40;
 
     //every spawn, up this by 1, when it gets to 3, add 1 additional enemy to spawn
     int upTickEnemySpawnCount = 0;

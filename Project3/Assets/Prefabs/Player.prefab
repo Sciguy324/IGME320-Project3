@@ -245,6 +245,7 @@ MonoBehaviour:
   maxSpeed: 2
   maxForce: 2
   gun: {fileID: 2088297091276524237}
+  gunBaseForRotation: {fileID: 537829162140154891}
   _rigidBody: {fileID: 1997354969597248600}
   visualCopies: []
   xp: 0
@@ -252,7 +253,6 @@ MonoBehaviour:
   reloadSpeed: 0
   accelTimeConstant: 0.05
   playerGUI: {fileID: 0}
-  gunBaseForRotation: {fileID: 537829162140154891}
 --- !u!95 &7643834728558564501
 Animator:
   serializedVersion: 4
@@ -342,6 +342,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 537829162140154891}
     m_Modifications:
+    - target: {fileID: 821154860520309346, guid: 3f3b8b29f98de534a8e0b5ac9be8af16, type: 3}
+      propertyPath: heldByPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 821154860520309346, guid: 3f3b8b29f98de534a8e0b5ac9be8af16, type: 3}
       propertyPath: isRealodingSprite
       value: 

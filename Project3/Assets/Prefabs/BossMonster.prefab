@@ -132,7 +132,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3, y: 3}
+    oldSize: {x: 15, y: 15}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -203,7 +203,7 @@ MonoBehaviour:
   attackDamage: 1
   targetEntity: {fileID: 0}
   expValue: 0
-  enemyVisuals: {fileID: 0}
+  enemyVisuals: {fileID: -1297029501, guid: 95609fec46ddc4bdbacf48bd74ef0064, type: 3}
 --- !u!1001 &3425126146187568071
 PrefabInstance:
   m_ObjectHideFlags: 0

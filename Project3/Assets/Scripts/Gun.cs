@@ -69,7 +69,8 @@ public class Gun : MonoBehaviour
             bulletScript.sourceTag = sourceName;
             bulletScript.damage = damage;
             currentBulletCount--;
-            gui.SetAmmo(maxMagazineSize, currentBulletCount);
+            if (gui != null)
+                gui.SetAmmo(maxMagazineSize, currentBulletCount);
 
         }
         else if(!isReloading)
@@ -81,13 +82,16 @@ public class Gun : MonoBehaviour
 
     IEnumerator Reload()
     {
-        gui.startReloading(Player.Instance.reloadSpeed);
-        isRealodingSprite.SetActive(true);
+        if (gui != null)
+            gui.startReloading(Player.Instance.reloadSpeed);
+        if (isRealodingSprite != null)
+            isRealodingSprite.SetActive(true);
         isReloading = true;
         yield return new WaitForSeconds(Player.Instance.reloadSpeed);
         currentBulletCount = maxMagazineSize;
         isReloading = false;
-        isRealodingSprite.SetActive(false);
+        if (isRealodingSprite != null)
+            isRealodingSprite.SetActive(false);
         gui.SetAmmo(maxMagazineSize, currentBulletCount);
 
     }
