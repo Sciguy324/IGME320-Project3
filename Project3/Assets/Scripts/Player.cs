@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class Player : GenericEntity
 {
     public int xp;
-    public int nextLevelEXP =3;
+    public int nextLevelEXP = 3;
     public float reloadSpeed;
     private float invincibilityTime = 1.0f;
+    public float accelTimeConstant = 0.05f;
 
     private Animator anim;
 
@@ -105,8 +106,11 @@ public class Player : GenericEntity
             anim.SetBool("isDown", true);
             anim.SetBool("isLeft", false);
         }
-        _rigidBody.velocity = input.normalized * speed;
-
+        // Smoothly change velocity over to target velocity assuming an exponentially decaying approach
+        Vector2 targetVelocity = input.normalized * speed;
+        
+        Vector2 diff = targetVelocity - _rigidBody.velocity;
+        _rigidBody.velocity = _rigidBody.velocity + diff * (1-Mathf.Exp(-Time.deltaTime/accelTimeConstant));
     }
 
     override public void OnCollisionEnter2D(Collision2D collision) {
