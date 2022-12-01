@@ -6,7 +6,7 @@ public class Gun : MonoBehaviour
 {
     private List<GameObject> objectMagazine;
     public int maxMagazineSize = 6;
-    private int currentBulletCount = 6;
+    private int currentBulletCount = 0;
     public Transform firePoint;
     public GameObject bulletPrefab;
     public float bulletSpeed = 20f;
@@ -19,6 +19,7 @@ public class Gun : MonoBehaviour
     void Start()
     {
         objectMagazine = new List<GameObject>();
+        currentBulletCount = maxMagazineSize;
     }
 
     // Update is called once per frame

@@ -39,6 +39,16 @@ public class Bullet : MonoBehaviour
         // Check if other object is an entity
         // If it is, decrement the number of pierces
         if (collision.gameObject.GetComponent<GenericEntity>()) {
+            // Do not shoot self
+            if (sourceTag == collision.gameObject.tag) {
+                return;
+            }
+            // Enemies and bosses can't shoot each other
+            if ((sourceTag == "Boss" || sourceTag == "Enemy") &&
+                (collision.gameObject.GetComponent<Enemy>())) {
+                return;
+            }
+            
             // Decrement the number of pierces remaining.  Return to sender if applicable
             piercesRemaining--;
             if (piercesRemaining <= 0) {
