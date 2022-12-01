@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6239906473744755955, guid: f9b89c2869d1b5340a9b9a2c847bb21b, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7052c8b4bb06f644ea75e62b72afedbd, type: 2}
     - target: {fileID: 277542826361868744, guid: f9b89c2869d1b5340a9b9a2c847bb21b, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -41,7 +45,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4290737888066132580, guid: f9b89c2869d1b5340a9b9a2c847bb21b, type: 3}
       propertyPath: maxHealth
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4290737888066132580, guid: f9b89c2869d1b5340a9b9a2c847bb21b, type: 3}
       propertyPath: enemyVisuals
