@@ -16,6 +16,7 @@ public class Player : GenericEntity
     private bool tempInves = false;
     //GUI
     public Gui playerGUI;
+    public GameObject hatObject;
     //singlton code
     private static Player instance;
     public static Player Instance { get; private set; }
@@ -43,6 +44,8 @@ public class Player : GenericEntity
         manager = GameObject.Find("GameManager").GetComponent<GameManager>();
         _rigidBody = gameObject.GetComponent<Rigidbody2D>();
         playerGUI.expText.text = "0 / " + nextLevelEXP.ToString();
+        if (wearingHat)
+            unlockHat();
     }
 
     void WrapAround()
@@ -135,6 +138,12 @@ public class Player : GenericEntity
             StartCoroutine(tempshield());
         }
 
+    }
+
+    public void unlockHat()
+    {
+        wearingHat = true;
+        hatObject.SetActive(true);
     }
 
 

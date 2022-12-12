@@ -39,7 +39,7 @@ public class BaseUpgrade : ScriptableObject
         if (reloadMultiplier != 0.0f)
             player.reloadSpeed *= reloadMultiplier;
         if (unlockHat)
-            player.wearingHat = true;
+            player.unlockHat();
     }
 
     public bool getOk(Player player)

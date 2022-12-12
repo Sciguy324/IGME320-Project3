@@ -575,6 +575,10 @@ PrefabInstance:
       propertyPath: timerText
       value: 
       objectReference: {fileID: 879050799}
+    - target: {fileID: 537829162140154891, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2088297091276524237, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: gui
       value: 
@@ -595,6 +599,10 @@ PrefabInstance:
       propertyPath: gunBaseForRotation
       value: 
       objectReference: {fileID: 1209019536}
+    - target: {fileID: 5981635787456963950, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 7617668363969440426, guid: ec37a39162148ba46975d3ec9470fd4a, type: 3}
       propertyPath: gui
       value: 
@@ -7605,7 +7613,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: upgradeList.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: buttonList.Array.data[0]
@@ -7651,6 +7659,10 @@ PrefabInstance:
       propertyPath: upgradeList.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: bd76c24ac6929734680a4380602eb466, type: 2}
+    - target: {fileID: -7157962511845483489, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
+      propertyPath: upgradeList.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 755beb3b21c2f3b4ba97bab0caebcff6, type: 2}
     - target: {fileID: 4532233818817016972, guid: 4b531ab90051b1241a61fb988e64310d, type: 3}
       propertyPath: m_Name
       value: GameManager
