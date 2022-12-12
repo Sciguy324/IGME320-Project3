@@ -157,6 +157,11 @@ public class GameManager : MonoBehaviour
 
     public void GameWon()
     {
+        // Kill all boss bullets
+        GameObject bulletPool = GameObject.Find("UbhObjectPool");
+        bulletPool.GetComponent<UbhObjectPool>().ReleaseAllBullet(true);
+    
+        // Load win screen
         SceneManager.LoadScene("YouWon");
     }
 }

@@ -149,6 +149,12 @@ IEnumerator tempshield()
     public override void Die()
     {
         Debug.Log("Oh no, I died!");
+        
+        // Kill all boss bullets
+        GameObject bulletPool = GameObject.Find("UbhObjectPool");
+        bulletPool.GetComponent<UbhObjectPool>().ReleaseAllBullet(true);
+
+        // Load the lose screen
         SceneManager.LoadScene("Lose Scene");
     }
 

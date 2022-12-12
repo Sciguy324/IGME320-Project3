@@ -14,6 +14,7 @@ public class Gun : MonoBehaviour
     private bool isReloading;
     public GameObject isRealodingSprite;
     public int damage = 1;
+    // public int shotCount = 1;
     public Gui gui;
     // Start is called before the first frame update
     void Start()
@@ -42,12 +43,11 @@ public class Gun : MonoBehaviour
   
 
     public void Shoot(string sourceName = "Player") {
-
+        // Shoots the gun if any bullets are left
         if (currentBulletCount > 0)
         {
-            // Shoots the gun
             GameObject bullet;
-            //if there are objects ready to be used, use them
+            // If there are objects ready to be used, use them
             if (objectMagazine.Count != 0)
             {
                 bullet = objectMagazine[0];
@@ -55,13 +55,14 @@ public class Gun : MonoBehaviour
                 bullet.SetActive(true);
                 objectMagazine.Remove(bullet);
             }
-            //if there are no object to be used, make a new bullet
+            // If there are no object to be used, make a new bullet
             else
             {
                 bullet = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
                 bullet.GetComponent<Bullet>().sender = this;
             }
             Bullet bulletScript = bullet.GetComponent<Bullet>();
+
             // Configure bullet and send it on its way
             bulletScript.maxPierces = piercing;
             bulletScript.Restore();
@@ -69,6 +70,8 @@ public class Gun : MonoBehaviour
             bulletScript.sourceTag = sourceName;
             bulletScript.damage = damage;
             currentBulletCount--;
+
+            // Update GUI accordingly (if available)
             if (gui != null)
                 gui.SetAmmo(maxMagazineSize, currentBulletCount);
 
